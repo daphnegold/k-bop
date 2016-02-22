@@ -16,8 +16,11 @@
   },
   "name": "k-bop",
   "description": "k-bop: An Ionic project",
-  "cordovaPlugins": [],
+  "cordovaPlugins": [
+    "cordova-plugin-inappbrowser"
+  ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ]
 }

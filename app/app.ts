@@ -1,6 +1,6 @@
 import {App, IonicApp, Platform} from 'ionic-framework/ionic';
 
-import {GettingStartedPage} from './pages/getting-started/getting-started';
+import {LoginPage} from './pages/login/login';
 import {ListPage} from './pages/list/list';
 import {GridPage} from './pages/grid/grid';
 
@@ -12,7 +12,7 @@ import {Type} from 'angular2/core';
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class MyApp {
-  rootPage: Type = GettingStartedPage;
+  rootPage: Type = LoginPage;
   pages: Array<{title: string, component: Type}>
 
   constructor(private app: IonicApp, private platform: Platform) {
@@ -20,7 +20,7 @@ class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Getting Started', component: GettingStartedPage },
+      { title: 'Login', component: LoginPage },
       { title: 'List', component: ListPage },
       { title: 'Grid Icons', component: GridPage }
     ];
