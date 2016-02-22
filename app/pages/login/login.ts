@@ -1,6 +1,5 @@
 import {Page, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
 
-
 @Page({
   templateUrl: 'build/pages/login/login.html',
 })
