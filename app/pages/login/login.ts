@@ -1,17 +1,29 @@
-import {Page, Platform} from 'ionic-framework/ionic';
+import {Page, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
 
 
 @Page({
   templateUrl: 'build/pages/login/login.html',
 })
 export class LoginPage {
+  local: Storage = new Storage(LocalStorage);
+
   constructor(private platform: Platform) {
     this.platform = platform;
+  }
+
+  loggedIn() {
+    let token = this.local.get('id_token')._result;
+
+    if (token) {
+      console.log(token)
+      return true;
+    }
   }
 
   login() {
     this.platform.ready().then(() => {
       this.spotifyCode().then((success) => {
+        this.local.set('id_token', "I'm a test token!");
         alert(success.code);
       }, (error) => {
         alert(error);
@@ -21,7 +33,7 @@ export class LoginPage {
 
   spotifyCode() {
     return new Promise(function(resolve, reject) {
-      var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=" + "3fe64739f9b84775a7ef6e4ec61d19b6" + "&redirect_uri=http://localhost/callback&response_type=code", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+      var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=" + "3fe64739f9b84775a7ef6e4ec61d19b6" + "&redirect_uri=http://localhost/callback&response_type=code&scope=playlist-modify-public%20playlist-modify-private", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
       browserRef.addEventListener("loadstart", (event) => {
         if ((event.url).indexOf("http://localhost/callback") === 0) {
@@ -41,8 +53,12 @@ export class LoginPage {
         }
       });
       browserRef.addEventListener("exit", function(event) {
-        reject("The Spotify sign in flow was canceled");
+        reject("The Spotify sign in was canceled");
       });
     });
+  }
+
+  spotifyToken() {
+
   }
 }

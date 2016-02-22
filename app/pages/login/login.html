@@ -15,7 +15,7 @@
   </p>
   <p>
     <button primary menuToggle>Toggle Menu</button>
-    <button (click)="login()">Spotify Login</button>
+    <button *ngIf="!loggedIn()" (click)="login()">Spotify Login</button>
   </p>
 
 </ion-content>
