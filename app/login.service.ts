@@ -1,9 +1,8 @@
-import {Page, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
+import {Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
+import {Injectable} from 'angular2/core';
 
-@Page({
-  templateUrl: 'build/pages/login/login.html',
-})
-export class LoginPage {
+@Injectable()
+export class LoginService {
   local: Storage = new Storage(LocalStorage);
 
   constructor(private platform: Platform) {
@@ -22,7 +21,7 @@ export class LoginPage {
 
   login() {
     this.platform.ready().then(() => {
-      this.spotifyCode().then((success) => {
+      this.spotifyToken().then((success) => {
         var expiration = new Date().getTime() + 3600000
 
         this.local.set('access_token', success.access_token);
@@ -35,7 +34,7 @@ export class LoginPage {
     });
   }
 
-  spotifyCode() {
+  spotifyToken() {
     return new Promise(function(resolve, reject) {
       var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=" + "3fe64739f9b84775a7ef6e4ec61d19b6" + "&redirect_uri=http://localhost/callback&response_type=token&scope=playlist-modify-public%20playlist-modify-private", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
