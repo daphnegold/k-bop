@@ -5,6 +5,8 @@ import {Headers, RequestOptions} from 'angular2/http';
 
 import {Token} from "./token";
 import {LoginService} from "./login.service";
+import {Observable} from 'rxjs/Observable';
+
 
 @Page({
   templateUrl: 'build/pages/login/login.html',
