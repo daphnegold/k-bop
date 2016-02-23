@@ -4,12 +4,16 @@ import {LoginPage} from './pages/login/login';
 import {ListPage} from './pages/list/list';
 import {GridPage} from './pages/grid/grid';
 
+import {Http} from 'angular2/http';
+import {provide} from 'angular2/core';
+import {AuthHttp, AuthConfig} from 'angular2-jwt';
+
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
 import {Type} from 'angular2/core';
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class MyApp {
   rootPage: Type = LoginPage;
