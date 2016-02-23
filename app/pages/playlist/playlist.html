@@ -7,15 +7,15 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
+    <button ion-item *ngFor="#song of songs" (click)="songTapped($event, song)">
+      <!-- <ion-icon [name]="item.icon" item-left></ion-icon> -->
+      {{song.title}}
       <div class="item-note" item-right>
-        {{item.note}}
+        {{song.artist}}
       </div>
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+  <div *ngIf="selectedSong" padding>
+    You navigated here from <b>{{selectedSong.title}}</b>
   </div>
 </ion-content>

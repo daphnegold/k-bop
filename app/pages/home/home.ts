@@ -1,7 +1,7 @@
 import {Page, NavController} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
-import {Song} from '../../song'
 import {SongService} from '../../song.service'
+import {Song} from '../../song'
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
