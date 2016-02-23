@@ -1,14 +1,23 @@
 import {Page, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
+import {Http, Response} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
+import {Headers, RequestOptions} from 'angular2/http';
+
+import {Token} from "./token";
+import {LoginService} from "./login.service";
 
 @Page({
   templateUrl: 'build/pages/login/login.html',
+  providers: [LoginService]
 })
 export class LoginPage {
   local: Storage = new Storage(LocalStorage);
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private _loginService: LoginService) {
     this.platform = platform;
   }
+
+  errorMessage: string;
 
   loggedIn() {
     let token = this.local.get('id_token')._result;
@@ -24,6 +33,7 @@ export class LoginPage {
       this.spotifyCode().then((success) => {
         this.local.set('id_token', "I'm a test token!");
         alert(success.code);
+        this.spotifyToken(success.code)
       }, (error) => {
         alert(error);
       });
@@ -57,7 +67,11 @@ export class LoginPage {
     });
   }
 
-  spotifyToken() {
-
-  }
+  spotifyToken(code: string) {
+    if (!code) {return;}
+    this._loginService.getToken(code)
+      .subscribe(
+         token  => alert(token),
+         error =>  this.errorMessage = <any>error);
+    }
 }
