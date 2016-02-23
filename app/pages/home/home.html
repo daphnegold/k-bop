@@ -1,5 +1,5 @@
 
-<ion-navbar *navbar>
+<ion-navbar *navbar dark>
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
@@ -7,23 +7,44 @@
 </ion-navbar>
 
 
-<ion-content padding class="home">
+<ion-content class="home">
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->
-  <ionic-card width-90>
-    <ionic-card-header>
-      <p>{{ currentSong.artist }}</p>
-    </ionic-card-header>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-right>
+        <ion-icon name="md-musical-note" item-right></ion-icon>
+      </ion-avatar>
+      <h2>{{ currentSong.artist }}</h2>
+    </ion-item>
 
     <img [src]="currentSong.image_large">
 
     <ion-card-content>
-      <h2>{{ currentSong.title }}</h2>
+      <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
-  </ionic-card>
 
-  <p>
+    <button block dark round>
+      <ion-icon name="heart"></ion-icon>
+    </button>
+    <button block dark round>
+      <ion-icon name="close"></ion-icon>
+    </button>
+
+    <ion-item>
+      <button primary clear item-left>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>12 Likes</div>
+      </button>
+      <button primary clear item-left>
+        <ion-icon name="text"></ion-icon>
+        <div>4 Comments</div>
+      </button>
+    </ion-item>
+  </ion-card>
+
+  <ion-item>
     <button *ngIf="!loggedIn()" (click)="login()">Login</button>
-  </p>
+  </ion-item>
 </ion-content>
