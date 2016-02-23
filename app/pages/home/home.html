@@ -3,19 +3,26 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Login</ion-title>
+  <ion-title>k-bop!</ion-title>
 </ion-navbar>
 
 
-<ion-content padding class="login">
-
-  <h3>My Login Page</h3>
-  <p>
-     Let's get logged in OK?
-  </p>
-  <p>
+<ion-content padding class="home">
+  <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
-  </p>
+  </p> -->
+  <ionic-card width-90>
+    <ionic-card-header>
+      <p>{{ currentSong.artist }}</p>
+    </ionic-card-header>
+
+    <img [src]="currentSong.image_large">
+
+    <ion-card-content>
+      <h2>{{ currentSong.title }}</h2>
+    </ion-card-content>
+  </ionic-card>
+
   <p>
     <button *ngIf="!loggedIn()" (click)="login()">Login</button>
   </p>
