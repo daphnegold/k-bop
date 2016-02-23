@@ -36,7 +36,7 @@ export class LoginService {
 
   spotifyToken() {
     return new Promise(function(resolve, reject) {
-      var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=" + "3fe64739f9b84775a7ef6e4ec61d19b6" + "&redirect_uri=http://localhost/callback&response_type=token&scope=playlist-modify-public%20playlist-modify-private", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+      var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=3fe64739f9b84775a7ef6e4ec61d19b6&redirect_uri=http://localhost/callback&response_type=token&scope=playlist-modify-public%20playlist-modify-private", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
       browserRef.addEventListener("loadstart", (event) => {
         if ((event.url).indexOf("http://localhost/callback") === 0) {

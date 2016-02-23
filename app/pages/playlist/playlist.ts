@@ -2,9 +2,9 @@ import {Page, NavController, NavParams} from 'ionic-framework/ionic';
 
 
 @Page({
-  templateUrl: 'build/pages/list/list.html'
+  templateUrl: 'build/pages/playlist/playlist.html'
 })
-export class ListPage {
+export class PlaylistPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
@@ -27,7 +27,7 @@ export class ListPage {
   }
 
   itemTapped(event, item) {
-    this.nav.push(ListPage, {
+    this.nav.push(PlaylistPage, {
       item: item
     });
   }

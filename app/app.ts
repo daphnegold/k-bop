@@ -1,7 +1,7 @@
 import {App, IonicApp, Platform} from 'ionic-framework/ionic';
 
 import {HomePage} from './pages/home/home';
-import {ListPage} from './pages/list/list';
+import {PlaylistPage} from './pages/playlist/playlist';
 import {GridPage} from './pages/grid/grid';
 
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
@@ -21,7 +21,7 @@ class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      { title: 'Playlist', component: PlaylistPage },
       { title: 'Grid Icons', component: GridPage }
     ];
 
