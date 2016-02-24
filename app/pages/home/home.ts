@@ -27,7 +27,7 @@ export class HomePage {
   }
 
   loggedIn() {
-    this._loginService.loggedIn();
+    return this._loginService.loggedIn();
   }
 
   login() {

@@ -44,7 +44,5 @@
     </ion-item>
   </ion-card>
 
-  <ion-item>
-    <button *ngIf="!loggedIn()" (click)="login()">Login</button>
-  </ion-item>
+  <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
 </ion-content>
