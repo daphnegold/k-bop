@@ -27,10 +27,10 @@
       <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
 
-    <button block dark round>
+    <button block dark round (click)="decide(true)">
       <ion-icon name="heart"></ion-icon>
     </button>
-    <button block dark round>
+    <button block dark round (click)="decide(false)">
       <ion-icon name="close"></ion-icon>
     </button>
 

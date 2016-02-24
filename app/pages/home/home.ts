@@ -22,6 +22,12 @@ export class HomePage {
       });
   }
 
+  decide(choice) {
+    let randomNumber = Math.round(Math.random() * (this.songs.length - 1));
+
+    this.currentSong = this.songs[randomNumber];
+  }
+
   onPageLoaded() {
     this.getSongs();
   }
