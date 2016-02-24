@@ -21,12 +21,12 @@ export class LoginService {
 
   login() {
     this.platform.ready().then(() => {
-      this.spotifyToken().then((success) => {
+      this.backendLogin().then((success) => {
         var expiration = new Date().getTime() + 3600000
 
-        this.local.set('access_token', success.access_token);
+        this.local.set('access_token', "win");
         this.local.set('expiration', expiration);
-        alert(success.access_token);
+        alert(success);
         alert(expiration);
       }, (error) => {
         alert(error);
@@ -34,23 +34,19 @@ export class LoginService {
     });
   }
 
-  spotifyToken() {
+  backendLogin() {
     return new Promise(function(resolve, reject) {
-      var browserRef = window.cordova.InAppBrowser.open("https://accounts.spotify.com/authorize?client_id=3fe64739f9b84775a7ef6e4ec61d19b6&redirect_uri=http://localhost/callback&response_type=token&scope=playlist-modify-public%20playlist-modify-private", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+      var browserRef = window.cordova.InAppBrowser.open("http://kbop.herokuapp.com/auth/spotify", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
       browserRef.addEventListener("loadstart", (event) => {
-        if ((event.url).indexOf("http://localhost/callback") === 0) {
 
+        if ((event.url).indexOf("http://kbop.herokuapp.com/auth/spotify/callback") === 0) {
           browserRef.removeEventListener("exit", (event) => {});
           browserRef.close();
 
-          var responseParameters = ((event.url).split("#")[1]).split("&");
-          var parsedResponse = {};
-          for (var i = 0; i < responseParameters.length; i++) {
-            parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
-          }
-          if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
-            resolve(parsedResponse);
+          var responseParameters = ((event.url).split("?")[1]).split("=")
+          if (responseParameters[0] === "code") {
+            resolve("win");
           } else {
             reject("There was a problem authenticating with Spotify");
           }
