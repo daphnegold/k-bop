@@ -4,12 +4,15 @@ import {HomePage} from './pages/home/home';
 import {PlaylistPage} from './pages/playlist/playlist';
 import {GridPage} from './pages/grid/grid';
 
+import {PlaylistService} from './playlist.service';
+
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
 import {Type} from 'angular2/core';
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  providers: [PlaylistService]
 })
 class MyApp {
   rootPage: Type = HomePage;
