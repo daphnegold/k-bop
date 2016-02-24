@@ -10,7 +10,7 @@ export class LoginService {
   }
 
   loggedIn() {
-    let token = this.local.get('access_token')._result;
+    let token = this.local.get('id')._result;
     let expiration = this.local.get('expiration')._result;
 
     if (token && expiration > new Date().getTime()) {
@@ -24,10 +24,9 @@ export class LoginService {
       this.backendLogin().then((success) => {
         var expiration = new Date().getTime() + 3600000
 
-        this.local.set('access_token', "win");
+        this.local.set('id', success["user"]);
         this.local.set('expiration', expiration);
-        alert(success);
-        alert(expiration);
+        alert("Hi" + success["user"]);
       }, (error) => {
         alert(error);
       });
@@ -40,13 +39,17 @@ export class LoginService {
 
       browserRef.addEventListener("loadstart", (event) => {
 
-        if ((event.url).indexOf("http://kbop.herokuapp.com/auth/spotify/callback") === 0) {
+        // http://kbop.herokuapp.com/status?user=darkwingdaphne
+        if ((event.url).indexOf("http://kbop.herokuapp.com/status") === 0) {
           browserRef.removeEventListener("exit", (event) => {});
           browserRef.close();
 
-          var responseParameters = ((event.url).split("?")[1]).split("=")
-          if (responseParameters[0] === "code") {
-            resolve("win");
+          var parsedResponse = {};
+          var responseParameters = ((event.url).split("?")[1]).split("=");
+          parsedResponse[responseParameters[0]] = responseParameters[1];
+
+          if (parsedResponse["user"] !== undefined && parsedResponse["user"] !== null) {
+            resolve(parsedResponse);
           } else {
             reject("There was a problem authenticating with Spotify");
           }

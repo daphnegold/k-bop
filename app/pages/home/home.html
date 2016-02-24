@@ -11,6 +11,8 @@
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->
+  <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
+
   <ion-card>
     <ion-item>
       <ion-avatar item-right>
@@ -43,6 +45,4 @@
       </button>
     </ion-item>
   </ion-card>
-
-  <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
 </ion-content>
