@@ -8,7 +8,8 @@
 <ion-content>
   <ion-list>
     <button ion-item *ngFor="#song of myPlaylist" (click)="songTapped($event, song)">
-      <ion-icon name="md-musical-note" item-left></ion-icon>
+      <!-- <ion-icon name="md-musical-note" item-left></ion-icon> -->
+      <ion-avatar item-left><img src={{song.image_large}}></ion-avatar>
       {{song.title}}
       <div class="item-note" item-right>
         {{song.artist}}

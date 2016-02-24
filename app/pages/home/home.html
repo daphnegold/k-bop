@@ -3,7 +3,7 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>k-bop!</ion-title>
+  <!-- <ion-title>k-bop!</ion-title> -->
 </ion-navbar>
 
 
@@ -11,9 +11,8 @@
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->
-  <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
 
-  <ion-card>
+  <ion-card on-swipe-left="decide(false)" on-swipe-right="decide(true)">
     <ion-item>
       <ion-avatar item-right>
         <ion-icon name="md-musical-note" item-right></ion-icon>
@@ -27,16 +26,23 @@
       <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
 
-    <button block dark round (click)="decide(true)">
-      <ion-icon name="heart"></ion-icon>
-    </button>
-    <button block dark round (click)="decide(false)">
-      <ion-icon name="close"></ion-icon>
-    </button>
+    <ion-row class="grid">
+      <ion-col>
+        <a button dark round (click)="decide(false)">
+          <ion-icon name="sad"></ion-icon>
+        </a>
+      </ion-col>
+      <ion-col>
+        <a button dark round (click)="decide(true)">
+          <!-- <ion-icon name="heart-outline"></ion-icon> -->
+          <ion-icon name="happy"></ion-icon>
+        </a>
+      </ion-col>
+    </ion-row>
 
     <ion-item>
       <button primary clear item-left>
-        <ion-icon name="thumbs-up"></ion-icon>
+        <ion-icon name="heart"></ion-icon>
         <div>12 Likes</div>
       </button>
       <button primary clear item-left>
@@ -45,4 +51,7 @@
       </button>
     </ion-item>
   </ion-card>
+
+  <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
+
 </ion-content>

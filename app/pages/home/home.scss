@@ -7,3 +7,21 @@
   }
 
 }
+
+.grid {
+
+  ion-row {
+    margin: 20px 0;
+  }
+
+  ion-icon {
+    font-size: 64px;
+    padding: 0;
+  }
+
+  a[dark] {
+    width: 100%;
+    height: 100px;
+  }
+
+}
