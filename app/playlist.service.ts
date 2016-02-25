@@ -15,7 +15,7 @@ export class PlaylistService {
 
   deleteSong(song) {
     // a.splice(a.indexOf(4))
-    this.playlist.splice(this.playlist.indexOf(song));
+    this.playlist.splice(this.playlist.indexOf(song), 1);
     console.log("Deleted song:");
     console.log(song);
   }
