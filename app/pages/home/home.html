@@ -25,18 +25,18 @@
       <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
 
-    <ion-row class="grid">
-      <ion-col>
-        <a button dark clear round (click)="decide(false)">
+    <ion-item class="deciders">
+      <!-- <ion-button start> -->
+        <button dark clear round item-left (click)="decide(false)">
           <ion-icon name="sad"></ion-icon>
-        </a>
-      </ion-col>
-      <ion-col>
-        <a button dark clear round (click)="decide(true)">
+        </button>
+      <!-- </ion-button> -->
+      <!-- <ion-button> -->
+        <button dark clear round item-right (click)="decide(true)">
           <ion-icon name="happy"></ion-icon>
-        </a>
-      </ion-col>
-    </ion-row>
+        </button>
+      <!-- </ion-col> -->
+    </ion-item>
 
     <ion-item>
       <button primary clear item-left>
