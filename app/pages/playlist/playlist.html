@@ -7,25 +7,29 @@
 
 <ion-content>
   <ion-list>
-    <!-- <ion-item-sliding *ngFor="#song of myPlaylist" (click)="songTapped($event, song)">
+    <ion-item-sliding *ngFor="#song of myPlaylist">
       <ion-item>
         <ion-avatar item-left><img src={{song.image_large}}></ion-avatar>
         <h3>{{song.title}}</h3>
         <p>{{song.artist}}</p>
       </ion-item>
       <ion-item-options>
-        <button primary>
+        <button danger (click)="deleteSong()">
           <ion-icon name="delete"></ion-icon>
-          Text
+          Delete
+        </button>
+        <button primary (click)="songTapped($event, song)">
+          <ion-icon name="details"></ion-icon>
+          Details
         </button>
     </ion-item-options>
-    </ion-item-sliding> -->
-    <button ion-item *ngFor="#song of myPlaylist" (click)="songTapped($event, song)">
+    </ion-item-sliding>
+    <!-- <button ion-item *ngFor="#song of myPlaylist" (click)="songTapped($event, song)"> -->
       <!-- <ion-icon name="md-musical-note" item-left></ion-icon> -->
-      <ion-avatar item-left><img src={{song.image_large}}></ion-avatar>
+      <!-- <ion-avatar item-left><img src={{song.image_large}}></ion-avatar>
         <h3>{{song.title}}</h3>
         <p>{{song.artist}}</p>
-    </button>
+    </button> -->
   </ion-list>
   <div *ngIf="selectedSong" padding>
     You navigated here from <b>{{selectedSong.title}}</b>

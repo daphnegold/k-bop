@@ -42,6 +42,10 @@ export class PlaylistPage {
     // }
   }
 
+  deleteSong(song) {
+    this._playlistService.deleteSong(song);
+  }
+
   getPlaylist() {
     // return this.myPlaylist = this._playlistService.getPlaylist();
 
