@@ -25,7 +25,7 @@ class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Playlist', component: PlaylistPage },
-      { title: 'Grid Icons', component: GridPage }
+      // { title: 'Grid Icons', component: GridPage }
     ];
 
   }
