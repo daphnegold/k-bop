@@ -1,21 +1,21 @@
-import {Playlist} from './playlist';
+// import {Playlist} from './playlist';
 import {Injectable} from 'angular2/core';
 
 @Injectable()
 export class PlaylistService {
-  playlist: Playlist[] = [];
+  playlist: Set<{}> = new Set();
 
   constructor () { }
 
   addSong(song) {
-    this.playlist.push(song);
+    this.playlist.add(song);
     console.log("Added song:");
     console.log(song);
   }
 
   deleteSong(song) {
     // a.splice(a.indexOf(4))
-    this.playlist.splice(this.playlist.indexOf(song), 1);
+    this.playlist.delete(song);
     console.log("Deleted song:");
     console.log(song);
   }

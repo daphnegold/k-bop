@@ -5,7 +5,7 @@ import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
 
 import {Song} from '../../song'
-import {Playlist} from '../../playlist';
+// import {Playlist} from '../../playlist';
 
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
@@ -17,7 +17,7 @@ export class PlaylistPage {
 
   selectedSong: any;
   songs: Song[];
-  myPlaylist: Playlist[];
+  myPlaylist: Set<{}>;
 
   constructor(
     private nav: NavController,
