@@ -26,7 +26,7 @@ export class LoginService {
 
         this.local.set('id', success["user"]);
         this.local.set('expiration', expiration);
-        alert("Hi" + success["user"]);
+        alert("Hi " + success["user"]);
       }, (error) => {
         alert(error);
       });
@@ -34,7 +34,7 @@ export class LoginService {
   }
 
   backendLogin() {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       var browserRef = window.cordova.InAppBrowser.open("http://kbop.herokuapp.com/auth/spotify", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
       browserRef.addEventListener("loadstart", (event) => {
@@ -55,7 +55,7 @@ export class LoginService {
           }
         }
       });
-      browserRef.addEventListener("exit", function(event) {
+      browserRef.addEventListener("exit", (event) => {
         reject("The Spotify sign in was canceled");
       });
     });

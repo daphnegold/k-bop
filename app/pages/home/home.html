@@ -1,18 +1,17 @@
 
 <ion-navbar *navbar dark>
-  <button menuToggle>
+  <button menuToggle (click)="stopSong()">
     <ion-icon name="menu"></ion-icon>
   </button>
   <!-- <ion-title>k-bop!</ion-title> -->
 </ion-navbar>
-
 
 <ion-content class="home">
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->
 
-  <ion-card on-swipe-left="decide(false)" on-swipe-right="decide(true)">
+  <ion-card>
     <ion-item>
       <ion-avatar item-right>
         <ion-icon name="md-musical-note" item-right></ion-icon>
@@ -20,7 +19,7 @@
       <h2>{{ currentSong.artist }}</h2>
     </ion-item>
 
-    <img [src]="currentSong.image_large">
+    <img [src]="currentSong.image_large" (click)="toggleSong()">
 
     <ion-card-content>
       <h4>{{ currentSong.title }}</h4>
@@ -28,12 +27,12 @@
 
     <ion-row class="grid">
       <ion-col>
-        <a button dark round (click)="decide(false)">
+        <a button dark round clear (click)="decide(false)">
           <ion-icon name="sad"></ion-icon>
         </a>
       </ion-col>
       <ion-col>
-        <a button dark round (click)="decide(true)">
+        <a button dark round clear (click)="decide(true)">
           <!-- <ion-icon name="heart-outline"></ion-icon> -->
           <ion-icon name="happy"></ion-icon>
         </a>
