@@ -12,31 +12,7 @@
   </p> -->
 
   <ion-card>
-    <ion-item>
-      <ion-avatar item-right>
-        <ion-icon name="md-musical-note" item-right></ion-icon>
-      </ion-avatar>
-      <h2>{{ currentSong.artist }}</h2>
-    </ion-item>
-
-    <img [src]="currentSong.image" (click)="toggleSong()">
-
-    <ion-card-content>
-      <h4>{{ currentSong.title }}</h4>
-    </ion-card-content>
-
-    <ion-item class="deciders">
-      <!-- <ion-button start> -->
-        <button dark clear round item-left (click)="decide(false)">
-          <ion-icon name="sad"></ion-icon>
-        </button>
-      <!-- </ion-button> -->
-      <!-- <ion-button> -->
-        <button dark clear round item-right (click)="decide(true)">
-          <ion-icon name="happy"></ion-icon>
-        </button>
-      <!-- </ion-col> -->
-    </ion-item>
+    <song>Loading...</song>
 
     <ion-item>
       <button primary clear item-left>
