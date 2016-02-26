@@ -3,4 +3,5 @@ export interface Song {
   artist: string;
   preview: string;
   image_large: string;
+  spotify_url: string;
 }

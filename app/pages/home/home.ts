@@ -13,6 +13,7 @@ export class HomePage {
   currentSong: Song;
   audio: any;
   paused: boolean;
+  errorMessage: string;
 
   constructor(
     private _loginService: LoginService,
@@ -52,11 +53,16 @@ export class HomePage {
 
   getSongs() {
     return this._songService.getSongs()
-      .then(
-        songs => {
-          this.songs = songs;
-          this.currentSong = this.songs[0];
-      });
+        .then(
+          songs => { this.songs = songs; this.currentSong = this.songs[0]; },
+          error =>  this.errorMessage = <any>error);
+          
+    // return this._songService.getSongs()
+    //   .then(
+    //     songs => {
+    //       this.songs = songs;
+    //       this.currentSong = this.songs[0];
+    //   });
   }
 
   decide(choice) {
