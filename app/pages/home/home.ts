@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
-import {SongService} from '../../song.service'
+// import {SongService} from '../../song.service'
 import {Song} from '../../song'
 import {PlaylistService} from '../../playlist.service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -9,7 +9,7 @@ import {SongComponent} from '../../song.component';
 @Page({
   templateUrl: 'build/pages/home/home.html',
   directives:[SongComponent],
-  providers: [LoginService, SongService, HTTP_PROVIDERS]
+  providers: [LoginService, HTTP_PROVIDERS]
 })
 export class HomePage {
   // songs: Song[];
@@ -18,10 +18,7 @@ export class HomePage {
   // paused: boolean;
   // errorMessage: string;
 
-  constructor(
-    private _loginService: LoginService,
-    private _songService: SongService,
-    private _playlistService: PlaylistService) { }
+  constructor(private _loginService: LoginService) { }
 
   // playSong() {
   //   return new Promise((resolve, reject) => {

@@ -7,13 +7,14 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class SongService {
-  private _songsUrl = "http://kbop.herokuapp.com/songs";  // URL to web api
+  private _songsUrl = "http://kbop.herokuapp.com/songs";
+  // private _songsUrl = "app/songs"
 
   constructor(private http: Http) { }
 
   getSongs () {
     return this.http.get(this._songsUrl)
-      .map(res => <Song[]> res.json().data)
+      .map(res => <Song[]> res.json())
       .do(data => console.log(data))
       .catch(this.handleError);
   }

@@ -5,6 +5,7 @@ import {PlaylistService} from './playlist.service';
 
 @Component({
   selector: 'song',
+  providers: [SongService],
   template: `
   <ion-item>
     <ion-avatar item-right>
@@ -13,7 +14,7 @@ import {PlaylistService} from './playlist.service';
     <h2>{{ currentSong.artist }}</h2>
   </ion-item>
 
-  <img [src]="currentSong.image" (click)="toggleSong()">
+  <img [src]="currentSong.image_large" (click)="toggleSong()">
 
   <ion-card-content>
     <h4>{{ currentSong.title }}</h4>
@@ -38,13 +39,16 @@ export class SongComponent implements OnInit {
   paused: boolean;
 
   constructor (private _songService: SongService, private _playlistService: PlaylistService) { }
-  ngOnInit() { this.getSongs(); }
+  ngOnInit() {
+    this.getSongs();
+    console.log('calling api')
+  }
 
   getSongs() {
     this._songService.getSongs()
        .subscribe(
-         songs => this.songs = songs,
-         error =>  this.errorMessage = <any>error);
+         songs => { this.songs = songs; this.currentSong = this.songs[0]; console.log(this.currentSong)},
+         error => this.errorMessage = <any>error);
   }
 
   toggleSong() {
