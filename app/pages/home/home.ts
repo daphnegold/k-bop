@@ -19,27 +19,53 @@ export class HomePage {
     private _songService: SongService) {
    }
 
-   getSongs() {
-     if (this.songs) {
-       console.log(this.songs.length)
+   onPageLoaded() {
+     if (this._songService.songs) {
+       this.currentSong = this._songService.songs[0]
+
+       if (!this._songService.audio) {
+         this.playSong().then((success) => {
+           console.log("Preview complete")
+         }, (error) => {
+           alert("Something has gone wrong");
+         });
+       }
      }
-     if (!this.songs || this.songs.length < 3) {
+   }
+
+   getSongs() {
+     if (this._songService.songs) {
+       console.log(this._songService.songs.length)
+     }
+
+     if (!this._songService.songs || this._songService.songs.length < 3) {
 
        this._songService.getSongs()
           .subscribe(
             songs => {
-              this.songs = songs;
-              this.currentSong = this.songs[0];
+              this._songService.songs = songs;
+              this.currentSong = this._songService.songs[0];
 
-              this.playSong().then((success) => {
-                console.log("Preview complete")
-              }, (error) => {
-                alert("Something has gone wrong");
-              });
+              if (!this._songService.audio) {
+                this.playSong().then((success) => {
+                  console.log("Preview complete")
+                }, (error) => {
+                  alert("Something has gone wrong");
+                });
+              }
 
               console.log(this.currentSong)},
             error => console.log(<any>error));
+     } else {
+       this.currentSong = this._songService.songs[0];
 
+       if (!this._songService.audio) {
+         this.playSong().then((success) => {
+           console.log("Preview complete")
+         }, (error) => {
+           alert("Something has gone wrong");
+         });
+       }
      }
    }
 
@@ -49,6 +75,10 @@ export class HomePage {
 
    stopSong() {
      this._songService.stopSong();
+   }
+
+   removeAudio() {
+     this._songService.removeAudio();
    }
 
    startSong() {
@@ -65,8 +95,8 @@ export class HomePage {
      }
 
      this.stopSong();
-     let randomNumber = Math.round(Math.random() * (this.songs.length - 1));
-     this.currentSong = this.songs[randomNumber];
+     let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
+     this.currentSong = this._songService.songs[randomNumber];
 
      this.playSong().then((success) => {
        console.log("Preview complete")
@@ -86,9 +116,11 @@ export class HomePage {
   doRefresh(refresher) {
     if (this.pullable) {
       console.log('Doing Refresh', refresher)
+      if (this._songService.audio) {
+        this._songService.removeAudio();
+      }
       this.getSongs();
       this.pullable = false;
-      console.log('calling api')
 
       setTimeout(() => {
         refresher.complete();

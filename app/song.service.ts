@@ -10,10 +10,14 @@ export class SongService {
   private _songsUrl = "http://kbop.herokuapp.com/songs";
   audio: any;
   paused: boolean;
+  songs: Song[];
+  // currentSong: Song;
 
   constructor(private http: Http) { }
 
   getSongs () {
+    console.log('calling api');
+
     return this.http.get(this._songsUrl)
       .map(res => <Song[]> res.json())
       .do(data => console.log(data))
@@ -21,8 +25,6 @@ export class SongService {
   }
 
   private handleError (error: Response) {
-    // in a real world app, we may send the error to some remote logging infrastructure
-    // instead of just logging it to the console
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
@@ -38,12 +40,21 @@ export class SongService {
   }
 
   stopSong() {
+    console.log("stop song")
     if (this.audio) {
       this.audio.pause();
     }
   }
 
+  removeAudio() {
+    if (this.audio) {
+      this.audio.pause()
+      this.audio = null;
+    }
+  }
+
   startSong() {
+    console.log("start song")
     if (this.audio) {
       this.audio.play();
     }

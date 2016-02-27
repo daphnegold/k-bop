@@ -1,23 +1,17 @@
 import {Page, NavController, NavParams} from 'ionic-framework/ionic';
-
 import {LoginService} from '../../login.service';
 import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
-
 import {Song} from '../../song'
-// import {Playlist} from '../../playlist';
 
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
-  providers: [LoginService, SongService]
+  providers: [LoginService]
 })
 export class PlaylistPage {
-  // icons: string[];
-  // items: Array<{title: string, note: string, icon: string}>;
-
   selectedSong: any;
-  songs: Song[];
   myPlaylist: Set<{}>;
+  currentSong: Song;
 
   constructor(
     private nav: NavController,
@@ -26,20 +20,6 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
   ){
     this.selectedSong = navParams.get('song');
-
-    // If we navigated to this page, we will have an item available as a nav param
-    // this.selectedItem = navParams.get('item');
-    // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    // 'american-football', 'boat', 'bluetooth', 'build'];
-
-    // this.items = [];
-    // for(let i = 1; i < 11; i++) {
-    //   this.items.push({
-    //     title: 'Item ' + i,
-    //     note: 'This is item #' + i,
-    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-    //   });
-    // }
   }
 
   deleteSong(song) {
@@ -59,12 +39,30 @@ export class PlaylistPage {
 
   onPageLoaded() {
     this.getPlaylist();
-    // this.getSongs();
   }
 
-  songTapped(event, song) {
-    this.nav.push(PlaylistPage, {
-      song: song
-    });
+  // songTapped(event, song) {
+  //   this.nav.push(PlaylistPage, {
+  //     song: song
+  //   });
+  // }
+
+  removeAudio() {
+    this._songService.removeAudio();
+  }
+
+  stopSong() {
+    this._songService.stopSong();
+  }
+
+  playSong(song) {
+    if (song === this.currentSong && this._songService.audio) {
+      this._songService.stopSong();
+      this.currentSong = null;
+    } else {
+      this._songService.stopSong();
+      this.currentSong = song;
+      return this._songService.playSong(song);
+    }
   }
 }
