@@ -6,7 +6,12 @@
   <!-- <ion-title>k-bop!</ion-title> -->
 </ion-navbar>
 
+
 <ion-content class="home">
+  <ion-refresher
+    (refresh)="doRefresh($event, refresher)" pullingText="K-Pop is coming right up">
+  </ion-refresher>
+
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->

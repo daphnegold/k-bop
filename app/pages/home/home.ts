@@ -14,6 +14,7 @@ export class HomePage {
   currentSong: Song;
   audio: any;
   paused: boolean;
+  pullable: boolean = true;
 
   constructor(
     private _loginService: LoginService,
@@ -22,8 +23,7 @@ export class HomePage {
    }
 
    onPageLoaded() {
-     this.getSongs();
-     console.log('calling api')
+
    }
 
    getSongs() {
@@ -103,5 +103,20 @@ export class HomePage {
 
   login() {
     this._loginService.login();
+  }
+
+  doRefresh(refresher) {
+    if (this.pullable) {
+      console.log('Doing Refresh', refresher)
+      this.getSongs();
+      this.pullable = false;
+      console.log('calling api')
+
+      setTimeout(() => {
+        refresher.complete();
+        console.log("Complete");
+        this.pullable = true;
+       }, 10000);
+    }
   }
 }
