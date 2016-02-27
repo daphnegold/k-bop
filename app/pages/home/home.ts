@@ -3,7 +3,6 @@ import {LoginService} from '../../login.service';
 import {PlaylistService} from '../../playlist.service';
 import {SongService} from '../../song.service';
 import {Song} from '../../song'
-// import {SongComponent} from '../../song.component';
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
@@ -12,18 +11,12 @@ import {Song} from '../../song'
 export class HomePage {
   songs: Song[];
   currentSong: Song;
-  audio: any;
-  paused: boolean;
   pullable: boolean = true;
 
   constructor(
     private _loginService: LoginService,
     private _playlistService: PlaylistService,
     private _songService: SongService) {
-   }
-
-   onPageLoaded() {
-
    }
 
    getSongs() {
@@ -51,34 +44,19 @@ export class HomePage {
    }
 
    toggleSong() {
-     if (this.paused) {
-       this.startSong();
-       this.paused = false
-     } else {
-       this.stopSong();
-       this.paused = true
-     }
+     this._songService.toggleSong();
    }
 
    stopSong() {
-     if (this.audio) {
-       this.audio.pause();
-     }
+     this._songService.stopSong();
    }
 
    startSong() {
-     if (this.audio) {
-       this.audio.play();
-     }
+     this._songService.startSong();
    }
 
    playSong() {
-     return new Promise((resolve, reject) => {
-       this.audio = new Audio(this.currentSong.preview);
-       this.audio.autoplay = true;
-       this.audio.onerror = reject;
-       this.audio.onended = resolve;
-     });
+     return this._songService.playSong(this.currentSong);
    }
 
    decide(choice) {

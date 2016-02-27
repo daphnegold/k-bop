@@ -8,7 +8,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class SongService {
   private _songsUrl = "http://kbop.herokuapp.com/songs";
-  // private _songsUrl = "app/songs"
+  audio: any;
+  paused: boolean;
 
   constructor(private http: Http) { }
 
@@ -24,5 +25,36 @@ export class SongService {
     // instead of just logging it to the console
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
+  }
+
+  toggleSong() {
+    if (this.paused) {
+      this.startSong();
+      this.paused = false
+    } else {
+      this.stopSong();
+      this.paused = true
+    }
+  }
+
+  stopSong() {
+    if (this.audio) {
+      this.audio.pause();
+    }
+  }
+
+  startSong() {
+    if (this.audio) {
+      this.audio.play();
+    }
+  }
+
+  playSong(current) {
+    return new Promise((resolve, reject) => {
+      this.audio = new Audio(current.preview);
+      this.audio.autoplay = true;
+      this.audio.onerror = reject;
+      this.audio.onended = resolve;
+    });
   }
 }
