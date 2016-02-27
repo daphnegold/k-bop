@@ -23,6 +23,7 @@ export class PlaylistPage {
   }
 
   deleteSong(song) {
+    this._songService.removeAudio();
     this._playlistService.deleteSong(song);
   }
 
