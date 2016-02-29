@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams} from 'ionic-framework/ionic';
+import {Page, Alert, NavController, NavParams} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
 import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
@@ -20,6 +20,28 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
   ){
     this.selectedSong = navParams.get('song');
+  }
+
+  confirmClear() {
+    let confirm = Alert.create({
+      title: 'Clear your playlist??',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this._playlistService.playlist.clear();
+            console.log('Ok clicked');
+          }
+        }
+      ]
+    });
+    this.nav.present(confirm);
   }
 
   deleteSong(song) {

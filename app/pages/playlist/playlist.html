@@ -4,10 +4,10 @@
   </button>
   <ion-title>Playlist</ion-title>
   <ion-buttons end>
-    <button outline light>Clear</button>
+    <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button>
   </ion-buttons>
   <ion-buttons end>
-    <button outline light>Save to Spotify</button>
+    <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button>
   </ion-buttons>
 </ion-navbar>
 
