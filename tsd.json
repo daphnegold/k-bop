@@ -67,6 +67,9 @@
     },
     "cordova/plugins/StatusBar.d.ts": {
       "commit": "bd269cad4cb2b495f940c7b6afc5825d568029be"
+    },
+    "hammerjs/hammerjs.d.ts": {
+      "commit": "b10e5ade29708bb0a7d21916a9fe289973520e89"
     }
   }
 }

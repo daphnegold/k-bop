@@ -8,9 +8,9 @@
 </ion-navbar>
 
 
-<ion-content class="home">
+<ion-content class="home" id="swiperrific" >
   <ion-refresher
-    (refresh)="doRefresh($event, refresher)" pullingText="K-Pop is coming right up">
+    *ngIf="!currentSong" (refresh)="doRefresh($event, refresher)" pullingText="K-Pop is coming right up">
   </ion-refresher>
 
   <!-- <p>
@@ -31,14 +31,14 @@
       <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
 
-    <ion-item class="deciders">
+    <!-- <ion-item class="deciders">
         <button dark clear round item-left (click)="decide(false)">
           <ion-icon name="sad"></ion-icon>
         </button>
         <button dark clear round item-right (click)="decide(true)">
           <ion-icon name="happy"></ion-icon>
         </button>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
       <button primary clear item-left>

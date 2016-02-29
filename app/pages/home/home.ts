@@ -12,14 +12,28 @@ export class HomePage {
   songs: Song[];
   currentSong: Song;
   pullable: boolean = true;
+  hammertime: any;
+  cardElement: any;
 
   constructor(
     private _loginService: LoginService,
     private _playlistService: PlaylistService,
-    private _songService: SongService) {
-   }
+    private _songService: SongService) { }
 
    onPageLoaded() {
+     this.cardElement = document.getElementById('swiperrific');
+     this.hammertime = new Hammer(this.cardElement);
+     this.hammertime.on('swiperight', (event) => {
+       console.log('Swipe right');
+       this.decide(true);
+     });
+     this.hammertime.on('swipeleft', (event) => {
+       console.log('Swipe left');
+       this.decide(false);
+     });
+
+     console.log(this.hammertime);
+
      if (this._songService.songs) {
        this.currentSong = this._songService.songs[0]
 

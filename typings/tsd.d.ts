@@ -20,3 +20,4 @@
 /// <reference path="cordova/plugins/StatusBar.d.ts" />
 /// <reference path="cordova/plugins/Vibration.d.ts" />
 /// <reference path="cordova/plugins/WebSQL.d.ts" />
+/// <reference path="hammerjs/hammerjs.d.ts" />
