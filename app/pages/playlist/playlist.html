@@ -17,8 +17,9 @@
           <h3>{{song.title}}</h3>
           <p>{{song.artist}}</p>
         </div>
-        <!-- <ion-icon clear item-left *ngIf="nowPlaying(song)" name="md-musical-note"></ion-icon> -->
-        <ion-icon clear item-right name="md-musical-note" [ngClass]="{playing: nowPlaying(song)}"></ion-icon>
+        <ion-icon clear *ngIf="nowPlaying(song)" name="pause"></ion-icon>
+        <ion-icon clear *ngIf="!nowPlaying(song)" name="play"></ion-icon>
+        <!-- <ion-icon clear item-right name="md-musical-note" [ngClass]="{playing: nowPlaying(song)}"></ion-icon> -->
       </ion-item>
       <ion-item-options>
         <button danger (click)="deleteSong(song)">

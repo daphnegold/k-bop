@@ -5,3 +5,11 @@
 .ion-md-musical-note {
   // padding: 0 5px;
 }
+
+.ion-md-play, .ion-md-pause {
+  float: right;
+}
+
+.ion-md-play, .ion-md-pause, #info {
+  display: inline-block;
+}
