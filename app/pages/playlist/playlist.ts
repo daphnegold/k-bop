@@ -66,4 +66,10 @@ export class PlaylistPage {
       return this._songService.playSong(song);
     }
   }
+
+  nowPlaying(song) {
+    if (song === this.currentSong) {
+      return true;
+    }
+  }
 }

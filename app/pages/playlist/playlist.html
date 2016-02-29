@@ -12,9 +12,13 @@
   <ion-list>
     <ion-item-sliding *ngFor="#song of myPlaylist">
       <ion-item (click)="playSong(song)">
-        <ion-avatar item-left><img src={{song.image_large}}></ion-avatar>
-        <h3>{{song.title}}</h3>
-        <p>{{song.artist}}</p>
+        <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
+        <div id="info">
+          <h3>{{song.title}}</h3>
+          <p>{{song.artist}}</p>
+        </div>
+        <!-- <ion-icon clear item-left *ngIf="nowPlaying(song)" name="md-musical-note"></ion-icon> -->
+        <ion-icon clear item-right name="md-musical-note" [ngClass]="{playing: nowPlaying(song)}"></ion-icon>
       </ion-item>
       <ion-item-options>
         <button danger (click)="deleteSong(song)">
