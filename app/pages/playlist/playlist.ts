@@ -63,12 +63,19 @@ export class PlaylistPage {
     } else {
       this._songService.stopSong();
       this.currentSong = song;
-      return this._songService.playSong(song);
+      this._songService.playSong(song)
+        .then((success) => {
+          this.currentSong = null;
+          this._songService.stopSong();
+          console.log("Preview 100% complete")
+        }, (error) => {
+          alert("Something has gone wrong");
+        });
     }
   }
 
   nowPlaying(song) {
-    if (song === this.currentSong) {
+    if (song === this.currentSong && !this._songService.paused) {
       return true;
     }
   }

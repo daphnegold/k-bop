@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class SongService {
-  private _songsUrl = "http://kbop.herokuapp.com/songs";
+  private _songsUrl = "http://kbop.herokuapp.com/recs";
   audio: any;
   paused: boolean;
   songs: Song[];
