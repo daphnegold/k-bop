@@ -2,43 +2,49 @@ import {Page, NavController} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
 import {PlaylistService} from '../../playlist.service';
 import {SongService} from '../../song.service';
+import {HammerService} from '../../hammer.service';
 import {Song} from '../../song'
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
-  providers: [LoginService]
+  providers: [LoginService, HammerService]
 })
 export class HomePage {
   songs: Song[];
   currentSong: Song;
   pullable: boolean = true;
-  hammertime: any;
-  cardElement: any;
+  // hammertime: any;
+  // cardElement: any;
 
   constructor(
     private _loginService: LoginService,
     private _playlistService: PlaylistService,
-    private _songService: SongService) { }
+    private _songService: SongService,
+    private _hammerService: HammerService) { }
 
    onPageLoaded() {
-     this.cardElement = document.getElementById('swiperrific');
-     this.hammertime = new Hammer(this.cardElement);
-     this.hammertime.on('swiperight', (event) => {
+    //  this.cardElement = document.getElementById('swiperrific');
+    //  this.hammertime = new Hammer(this.cardElement);
+
+     this._hammerService.swipeInit();
+     this._hammerService.hammertime.on('swiperight', (event) => {
        console.log('Swipe right');
        this.decide(true);
      });
-     this.hammertime.on('swipeleft', (event) => {
+     this._hammerService.hammertime.on('swipeleft', (event) => {
        console.log('Swipe left');
        this.decide(false);
      });
 
-     console.log(this.hammertime);
+     console.log(this._hammerService.hammertime);
 
      if (this._songService.songs) {
-       this.currentSong = this._songService.songs[0]
+       this.currentSong = this._songService.songs[0];
 
        if (!this._songService.audio) {
          this.playSong().then((success) => {
+           this._songService.played = true;
+           this._songService.stopSong();
            console.log("Preview complete")
          }, (error) => {
            alert("Something has gone wrong");
@@ -62,6 +68,8 @@ export class HomePage {
 
               if (!this._songService.audio) {
                 this.playSong().then((success) => {
+                  this._songService.played = true;
+                  this._songService.stopSong();
                   console.log("Preview complete")
                 }, (error) => {
                   alert("Something has gone wrong");
@@ -75,6 +83,8 @@ export class HomePage {
 
        if (!this._songService.audio) {
          this.playSong().then((success) => {
+           this._songService.played = true;
+           this._songService.stopSong();
            console.log("Preview complete")
          }, (error) => {
            alert("Something has gone wrong");
@@ -84,7 +94,19 @@ export class HomePage {
    }
 
    toggleSong() {
-     this._songService.toggleSong();
+     if (this._songService.played) {
+       this._songService.played = false;
+
+       this.playSong().then((success) => {
+         this._songService.played = true;
+         this._songService.stopSong();
+         console.log("Preview complete")
+       }, (error) => {
+         alert("Something has gone wrong");
+       });
+     } else {
+       this._songService.toggleSong();
+     }
    }
 
    stopSong() {
@@ -113,6 +135,8 @@ export class HomePage {
      this.currentSong = this._songService.songs[randomNumber];
 
      this.playSong().then((success) => {
+       this._songService.played = true;
+       this._songService.stopSong();
        console.log("Preview complete")
      }, (error) => {
        alert("Something has gone wrong");

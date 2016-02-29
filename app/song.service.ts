@@ -11,6 +11,7 @@ export class SongService {
   audio: any;
   paused: boolean;
   songs: Song[];
+  played: boolean;
   // currentSong: Song;
 
   constructor(private http: Http) { }
@@ -63,7 +64,8 @@ export class SongService {
 
   playSong(current) {
     this.paused = false;
-    console.log("start song");
+    this.played = false;
+    console.log("start new song");
     return new Promise((resolve, reject) => {
       this.audio = new Audio(current.preview);
       this.audio.autoplay = true;
