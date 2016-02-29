@@ -43,13 +43,7 @@ export class HomePage {
        this.currentSong = this._songService.songs[0];
 
        if (!this._songService.audio) {
-         this.playSong().then((success) => {
-           this._songService.played = true;
-           this._songService.stopSong();
-           console.log("Preview complete")
-         }, (error) => {
-           alert("Something has gone wrong");
-         });
+         this.songTime();
        }
      }
    }
@@ -73,13 +67,7 @@ export class HomePage {
               this.currentSong = this._songService.songs[0];
 
               if (!this._songService.audio) {
-                this.playSong().then((success) => {
-                  this._songService.played = true;
-                  this._songService.stopSong();
-                  console.log("Preview complete")
-                }, (error) => {
-                  alert("Something has gone wrong");
-                });
+                this.songTime();
               }
 
               console.log(this.currentSong)},
@@ -88,13 +76,7 @@ export class HomePage {
        this.currentSong = this._songService.songs[0];
 
        if (!this._songService.audio) {
-         this.playSong().then((success) => {
-           this._songService.played = true;
-           this._songService.stopSong();
-           console.log("Preview complete")
-         }, (error) => {
-           alert("Something has gone wrong");
-         });
+         this.songTime();
        }
      }
    }
@@ -103,13 +85,7 @@ export class HomePage {
      if (this._songService.played) {
        this._songService.played = false;
 
-       this.playSong().then((success) => {
-         this._songService.played = true;
-         this._songService.stopSong();
-         console.log("Preview complete")
-       }, (error) => {
-         alert("Something has gone wrong");
-       });
+       this.songTime();
      } else {
        this._songService.toggleSong();
      }
@@ -140,6 +116,10 @@ export class HomePage {
      let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
      this.currentSong = this._songService.songs[randomNumber];
 
+     this.songTime();
+   }
+
+   songTime() {
      this.playSong().then((success) => {
        this._songService.played = true;
        this._songService.stopSong();
