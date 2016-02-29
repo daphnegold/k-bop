@@ -4,9 +4,14 @@
   </button>
   <ion-title>Playlist</ion-title>
   <ion-buttons end>
-    <button outline light>Save</button>
+    <button outline light>Clear</button>
+  </ion-buttons>
+  <ion-buttons end>
+    <button outline light>Save to Spotify</button>
   </ion-buttons>
 </ion-navbar>
+
+<h1 *ngIf="myPlaylist.size === 0">Your playlist is empty</h1>
 
 <ion-content>
   <ion-list>
@@ -33,7 +38,7 @@
     </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <div *ngIf="selectedSong" padding>
+  <!-- <div *ngIf="selectedSong" padding>
     You navigated here from <b>{{selectedSong.title}}</b>
-  </div>
+  </div> -->
 </ion-content>

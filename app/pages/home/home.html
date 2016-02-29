@@ -9,12 +9,13 @@
 
 <ion-content class="home">
   <ion-refresher
-    *ngIf="!currentSong" (refresh)="doRefresh($event, refresher)" pullingText="K-Pop is coming right up">
+    *ngIf="!currentSong" (refresh)="doRefresh($event, refresher)" pullingText="">
   </ion-refresher>
 
   <!-- <p>
     <button primary menuToggle>Toggle Menu</button>
   </p> -->
+  <h1 *ngIf="!currentSong && refresherPulled">K-Pop is coming right up!</h1>
 
   <ion-card *ngIf="currentSong">
     <ion-item>

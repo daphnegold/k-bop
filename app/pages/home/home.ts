@@ -13,6 +13,7 @@ export class HomePage {
   songs: Song[];
   currentSong: Song;
   pullable: boolean = true;
+  refresherPulled: boolean;
   // hammertime: any;
   // cardElement: any;
 
@@ -146,11 +147,13 @@ export class HomePage {
       }
       this.getSongs();
       this.pullable = false;
+      this.refresherPulled = true;
 
       setTimeout(() => {
         refresher.complete();
         console.log("Complete");
         this.pullable = true;
+        this.refresherPulled = false;
        }, 10000);
     }
   }
