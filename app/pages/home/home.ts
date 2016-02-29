@@ -30,12 +30,16 @@ export class HomePage {
 
      this._hammerService.swipeInit();
      this._hammerService.hammertime.on('swiperight', (event) => {
-       console.log('Swipe right');
-       this.decide(true);
+       if (this._songService.songs) {
+         console.log('Swipe right');
+         this.decide(true);
+       }
      });
      this._hammerService.hammertime.on('swipeleft', (event) => {
-       console.log('Swipe left');
-       this.decide(false);
+       if (this._songService.songs) {
+         console.log('Swipe left');
+         this.decide(false);
+       }
      });
 
      console.log(this._hammerService.hammertime);
