@@ -19,7 +19,7 @@
   <ion-card *ngIf="currentSong">
     <ion-item>
       <ion-avatar item-right>
-        <ion-icon name="md-musical-note" item-right></ion-icon>
+        <ion-icon *ngIf="!_songService.paused" name="md-musical-note" item-right></ion-icon>
       </ion-avatar>
       <h2>{{ currentSong.artist }}</h2>
     </ion-item>
