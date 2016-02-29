@@ -18,7 +18,7 @@ class MyApp {
   rootPage: Type = HomePage;
   pages: Array<{title: string, component: Type}>
 
-  constructor(private app: IonicApp, private platform: Platform) {
+  constructor(private app: IonicApp, private platform: Platform, private _songService: SongService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -54,5 +54,9 @@ class MyApp {
     // we wouldn't want the back button to show in this scenario
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
+  }
+
+  removeAudio() {
+    this._songService.removeAudio();
   }
 }

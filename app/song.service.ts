@@ -32,35 +32,38 @@ export class SongService {
   toggleSong() {
     if (this.paused) {
       this.startSong();
-      this.paused = false
     } else {
       this.stopSong();
-      this.paused = true
     }
   }
 
   stopSong() {
-    console.log("stop song")
     if (this.audio) {
+      console.log("stop song")
+      this.paused = true;
       this.audio.pause();
     }
   }
 
   removeAudio() {
     if (this.audio) {
-      this.audio.pause()
+      this.paused = false;
+      this.audio.pause();
       this.audio = null;
     }
   }
 
   startSong() {
-    console.log("start song")
     if (this.audio) {
+      console.log("start song");
+      this.paused = false;
       this.audio.play();
     }
   }
 
   playSong(current) {
+    this.paused = false;
+    console.log("start song");
     return new Promise((resolve, reject) => {
       this.audio = new Audio(current.preview);
       this.audio.autoplay = true;
