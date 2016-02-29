@@ -9,4 +9,9 @@ export class HammerService {
     this.cardElement = this.cardElement || document.getElementById('swiperrific');
     this.hammertime = this.hammertime || new Hammer(this.cardElement);
   }
+
+  swipeDestroy() {
+    this.hammertime.off('swiperight');
+    this.hammertime.off('swipeleft');
+  }
 }

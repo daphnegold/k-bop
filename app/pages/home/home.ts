@@ -20,9 +20,10 @@ export class HomePage {
     private _loginService: LoginService,
     private _playlistService: PlaylistService,
     private _songService: SongService,
-    private _hammerService: HammerService) { }
+    private _hammerService: HammerService,
+    private nav: NavController) { }
 
-   onPageLoaded() {
+   onPageDidEnter() {
     //  this.cardElement = document.getElementById('swiperrific');
     //  this.hammertime = new Hammer(this.cardElement);
 
@@ -51,6 +52,11 @@ export class HomePage {
          });
        }
      }
+   }
+
+   onPageWillLeave() {
+     console.log("leaving page")
+     this._hammerService.swipeDestroy();
    }
 
    getSongs() {
