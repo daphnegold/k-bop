@@ -71,7 +71,8 @@ export class HomePage {
               }
 
               console.log(this.currentSong)},
-            error => console.log(<any>error));
+            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+          );
      } else {
        this.currentSong = this._songService.songs[0];
 
