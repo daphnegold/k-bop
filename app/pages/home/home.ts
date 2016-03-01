@@ -119,6 +119,7 @@ export class HomePage {
          .subscribe(
            data => {
              this._playlistService.addSong(this.currentSong);
+             console.log("Server response:")
              console.log(data)
            },
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }

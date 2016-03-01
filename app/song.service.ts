@@ -4,12 +4,14 @@ import {Injectable} from 'angular2/core';
 import {Headers, RequestOptions} from 'angular2/http';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
+import {Storage, LocalStorage} from 'ionic-framework/ionic';
 import 'rxjs/Rx';
 
 @Injectable()
 export class SongService {
   private _songsUrl = "http://kbop.herokuapp.com/recs";
   private _addUrl = "http://kbop.herokuapp.com/add"
+  local: Storage = new Storage(LocalStorage);
   audio: any;
   paused: boolean;
   songs: Song[];
@@ -19,7 +21,8 @@ export class SongService {
   constructor(private http: Http) { }
 
   addSong(songUri: string) : Observable<Song>  {
-    let body = JSON.stringify({ "data": { uri: songUri, user: "darkwingdaphne" } });
+    let uid = this.local.get('id')._result;
+    let body = JSON.stringify({ "data": { uri: songUri, user: uid } });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 

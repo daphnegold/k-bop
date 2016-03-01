@@ -14,7 +14,6 @@ export class LoginService {
     let expiration = this.local.get('expiration')._result;
 
     if (token && expiration > new Date().getTime()) {
-      console.log(token)
       return true;
     }
   }
