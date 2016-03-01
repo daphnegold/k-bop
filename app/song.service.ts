@@ -1,6 +1,7 @@
 import {Song} from './song';
 import {SONGS} from './mock-songs';
 import {Injectable} from 'angular2/core';
+import {Headers, RequestOptions} from 'angular2/http';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -8,6 +9,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class SongService {
   private _songsUrl = "http://kbop.herokuapp.com/recs";
+  private _addUrl = "http://kbop.herokuapp.com/add"
   audio: any;
   paused: boolean;
   songs: Song[];
@@ -15,6 +17,17 @@ export class SongService {
   // currentSong: Song;
 
   constructor(private http: Http) { }
+
+  addSong(songUri: string) : Observable<Song>  {
+    let body = JSON.stringify({ "data": { uri: songUri, user: "darkwingdaphne" } });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this._addUrl, body, options)
+        .map(res => res.json())
+        .catch(this.handleError)
+  }
+
 
   getSongs () {
     console.log('calling api');

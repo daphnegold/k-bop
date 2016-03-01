@@ -115,7 +115,14 @@ export class HomePage {
 
    decide(choice) {
      if (choice) {
-       this._playlistService.addSong(this.currentSong);
+       this._songService.addSong(this.currentSong.uri)
+         .subscribe(
+           data => {
+             this._playlistService.addSong(this.currentSong);
+             console.log(data)
+           },
+           error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+         );
      }
 
      this.stopSong();
