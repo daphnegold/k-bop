@@ -10,7 +10,11 @@ export class IntroPage {
   constructor(private nav: NavController, private _loginService: LoginService) { }
 
   goToHome(){
+    if (this.loggedIn()) {
       this.nav.setRoot(HomePage);
+    } else {
+      this.nav.setRoot(IntroPage)
+    }
   }
 
   loggedIn() {
