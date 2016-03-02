@@ -24,7 +24,7 @@ export class PlaylistPage {
 
   confirmClear() {
     let confirm = Alert.create({
-      title: 'Clear your playlist??',
+      title: 'Clear your playlist?',
       buttons: [
         {
           text: 'Cancel',
@@ -35,8 +35,17 @@ export class PlaylistPage {
         {
           text: 'Ok',
           handler: () => {
-            this._playlistService.playlist.clear();
             console.log('Ok clicked');
+
+            this._playlistService.deleteSong("all")
+              .subscribe(
+                data => {
+                  this._playlistService.playlist.clear();
+                  console.log("Server response:");
+                  console.log(data);
+                },
+                error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+              );
           }
         }
       ]
@@ -47,7 +56,7 @@ export class PlaylistPage {
   deleteSong(song) {
     this._songService.removeAudio();
     let deletedSong = song;
-    this._playlistService.deleteSong(deletedSong)
+    this._playlistService.deleteSong(deletedSong.uri)
       .subscribe(
         data => {
           this._playlistService.playlist.delete(deletedSong);

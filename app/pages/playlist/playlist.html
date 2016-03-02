@@ -4,11 +4,13 @@
   </button>
   <ion-title>Playlist</ion-title>
   <ion-buttons end>
-    <!-- <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button> -->
+    <div *ngIf="myPlaylist">
+      <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button>
+    </div>
   </ion-buttons>
-  <ion-buttons end>
-    <!-- <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button> -->
-  </ion-buttons>
+  <!-- <ion-buttons end>
+    <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button>
+  </ion-buttons> -->
 </ion-navbar>
 
 <div>

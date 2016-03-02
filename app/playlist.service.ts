@@ -26,7 +26,7 @@ export class PlaylistService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete(this._deleteUrl + uid + "/song/" + song.uri, options)
+    return this.http.delete(this._deleteUrl + uid + "/song/" + song, options)
         .map(res => res.json())
         .catch(this.handleError)
   }
