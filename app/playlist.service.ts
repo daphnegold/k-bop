@@ -10,16 +10,33 @@ import 'rxjs/Rx';
 @Injectable()
 export class PlaylistService {
   private _playlistUrl = "http://kbop.herokuapp.com/playlist/"
+  private _deleteUrl = "http://kbop.herokuapp.com/user/"
   playlist: Set<{}> = new Set();
   playlistFromApi: boolean;
+  local: Storage = new Storage(LocalStorage);
 
   constructor (private http: Http) { }
 
+  deleteSong(song) {
+    // this.playlist.delete(song);
+    // console.log("Deleted song:");
+    // console.log(song);
+
+    let uid = this.local.get('id')._result;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(this._deleteUrl + uid + "/song/" + song.uri, options)
+        .map(res => res.json())
+        .catch(this.handleError)
+  }
+
   getPlaylist() {
+    let uid = this.local.get('id')._result;
     // return Promise.resolve(this.playlist);
     console.log('calling api');
 
-    return this.http.get(this._playlistUrl + "darkwingdaphne")
+    return this.http.get(this._playlistUrl + uid)
       .map(res => <Song[]> res.json())
       .do(songs => {
         songs.forEach((song) => {
@@ -39,13 +56,6 @@ export class PlaylistService {
   addSong(song) {
     this.playlist.add(song);
     console.log("Added song:");
-    console.log(song);
-  }
-
-  deleteSong(song) {
-    // a.splice(a.indexOf(4))
-    this.playlist.delete(song);
-    console.log("Deleted song:");
     console.log(song);
   }
 }

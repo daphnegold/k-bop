@@ -46,7 +46,16 @@ export class PlaylistPage {
 
   deleteSong(song) {
     this._songService.removeAudio();
-    this._playlistService.deleteSong(song);
+    let deletedSong = song;
+    this._playlistService.deleteSong(deletedSong)
+      .subscribe(
+        data => {
+          this._playlistService.playlist.delete(deletedSong);
+          console.log("Server response:");
+          console.log(data);
+        },
+        error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+      );
   }
 
   getPlaylist() {
