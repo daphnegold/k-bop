@@ -31,7 +31,6 @@ export class SongService {
         .catch(this.handleError)
   }
 
-
   getSongs () {
     console.log('calling api');
 

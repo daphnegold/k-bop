@@ -126,7 +126,7 @@ export class HomePage {
          );
      }
 
-     this.stopSong();
+     this.removeAudio();
      let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
      this.currentSong = this._songService.songs[randomNumber];
 
@@ -140,6 +140,8 @@ export class HomePage {
        console.log("Preview complete")
      }, (error) => {
        alert("Something has gone wrong");
+       this.removeAudio();
+       console.error(error);
      });
    }
 

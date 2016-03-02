@@ -120,6 +120,8 @@ export class PlaylistPage {
           console.log("Preview 100% complete")
         }, (error) => {
           alert("Something has gone wrong");
+          this.removeAudio();
+          console.error(error);
         });
     }
   }
