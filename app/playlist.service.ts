@@ -39,10 +39,13 @@ export class PlaylistService {
     return this.http.get(this._playlistUrl + uid)
       .map(res => <Song[]> res.json())
       .do(songs => {
+        this.playlist = new Set();
+        this.playlistFromApi = true;
+
         songs.forEach((song) => {
           this.playlist.add(song);
         });
-        this.playlistFromApi = true;
+
         console.log(this.playlist);
        })
       .catch(this.handleError);

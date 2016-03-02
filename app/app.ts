@@ -1,6 +1,6 @@
-import {App, IonicApp, Platform} from 'ionic-framework/ionic';
-
+import {App, IonicApp, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
 import {HomePage} from './pages/home/home';
+import {IntroPage} from './pages/intro/intro';
 import {PlaylistPage} from './pages/playlist/playlist';
 import {GridPage} from './pages/grid/grid';
 import {PlaylistService} from './playlist.service';
@@ -19,6 +19,17 @@ class MyApp {
   pages: Array<{title: string, component: Type}>
 
   constructor(private app: IonicApp, private platform: Platform, private _songService: SongService) {
+    let local = new Storage(LocalStorage);
+
+    local.get('id').then((result) => {
+      if(result){
+        this.rootPage = HomePage;
+      } else {
+        // local.set('introShown', true);
+        this.rootPage = IntroPage;
+      }
+    });
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation

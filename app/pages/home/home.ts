@@ -1,5 +1,5 @@
 import {Page, NavController} from 'ionic-framework/ionic';
-import {LoginService} from '../../login.service';
+// import {LoginService} from '../../login.service';
 import {PlaylistService} from '../../playlist.service';
 import {SongService} from '../../song.service';
 import {HammerService} from '../../hammer.service';
@@ -7,7 +7,7 @@ import {Song} from '../../song'
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
-  providers: [LoginService, HammerService]
+  providers: [HammerService]
 })
 export class HomePage {
   songs: Song[];
@@ -18,7 +18,6 @@ export class HomePage {
   // cardElement: any;
 
   constructor(
-    private _loginService: LoginService,
     private _playlistService: PlaylistService,
     private _songService: SongService,
     private _hammerService: HammerService,
@@ -144,13 +143,13 @@ export class HomePage {
      });
    }
 
-  loggedIn() {
-    return this._loginService.loggedIn();
-  }
-
-  login() {
-    this._loginService.login();
-  }
+  // loggedIn() {
+  //   return this._loginService.loggedIn();
+  // }
+  //
+  // login() {
+  //   this._loginService.login();
+  // }
 
   doRefresh(refresher) {
     if (this.pullable) {
