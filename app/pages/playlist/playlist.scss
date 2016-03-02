@@ -5,3 +5,12 @@
 .ion-md-play, .ion-md-pause, #info {
   display: inline-block;
 }
+
+#info {
+  max-width: 85%;
+
+  h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
