@@ -50,14 +50,20 @@ export class PlaylistPage {
   }
 
   getPlaylist() {
+    this._playlistService.getPlaylist()
+       .subscribe(
+         songs => this.myPlaylist = this._playlistService.playlist,
+         error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+       );
+
     // return this.myPlaylist = this._playlistService.getPlaylist();
 
-    return this._playlistService.getPlaylist()
-      .then(
-        songs => {
-          this.myPlaylist = songs;
-          console.log(this.myPlaylist);
-      });
+    // return this._playlistService.getPlaylist()
+    //   .then(
+    //     songs => {
+    //       this.myPlaylist = songs;
+    //       console.log(this.myPlaylist);
+    //   });
   }
 
   onPageLoaded() {

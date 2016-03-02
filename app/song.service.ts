@@ -3,7 +3,7 @@ import {SONGS} from './mock-songs';
 import {Injectable} from 'angular2/core';
 import {Headers, RequestOptions} from 'angular2/http';
 import {Http, Response} from 'angular2/http';
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {Storage, LocalStorage} from 'ionic-framework/ionic';
 import 'rxjs/Rx';
 

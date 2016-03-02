@@ -4,14 +4,19 @@
   </button>
   <ion-title>Playlist</ion-title>
   <ion-buttons end>
-    <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button>
+    <!-- <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button> -->
   </ion-buttons>
   <ion-buttons end>
-    <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button>
+    <!-- <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button> -->
   </ion-buttons>
 </ion-navbar>
 
-<h1 *ngIf="myPlaylist.size === 0">Your playlist is empty</h1>
+<div>
+  <h1 *ngIf="!myPlaylist">Your playlist is loading...</h1>
+</div>
+<div *ngIf="myPlaylist">
+  <h1 *ngIf="myPlaylist.size === 0">Your playlist is empty</h1>
+</div>
 
 <ion-content>
   <ion-list>
