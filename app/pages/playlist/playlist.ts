@@ -50,11 +50,15 @@ export class PlaylistPage {
   }
 
   getPlaylist() {
-    this._playlistService.getPlaylist()
-       .subscribe(
-         songs => this.myPlaylist = this._playlistService.playlist,
-         error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
-       );
+    if (this._playlistService.playlistFromApi) {
+      this.myPlaylist = this._playlistService.playlist;
+    } else {
+      this._playlistService.getPlaylist()
+         .subscribe(
+           songs => this.myPlaylist = this._playlistService.playlist,
+           error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+         );
+    }
 
     // return this.myPlaylist = this._playlistService.getPlaylist();
 

@@ -115,10 +115,11 @@ export class HomePage {
 
    decide(choice) {
      if (choice) {
-       this._songService.addSong(this.currentSong.uri)
+       let addedSong = this.currentSong
+       this._songService.addSong(addedSong.uri)
          .subscribe(
            data => {
-             this._playlistService.addSong(this.currentSong);
+             this._playlistService.addSong(addedSong);
              console.log("Server response:")
              console.log(data)
            },

@@ -11,6 +11,7 @@ import 'rxjs/Rx';
 export class PlaylistService {
   private _playlistUrl = "http://kbop.herokuapp.com/playlist/"
   playlist: Set<{}> = new Set();
+  playlistFromApi: boolean;
 
   constructor (private http: Http) { }
 
@@ -24,6 +25,7 @@ export class PlaylistService {
         songs.forEach((song) => {
           this.playlist.add(song);
         });
+        this.playlistFromApi = true;
         console.log(this.playlist);
        })
       .catch(this.handleError);
