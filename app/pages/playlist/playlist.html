@@ -18,9 +18,11 @@
 </div>
 <div *ngIf="myPlaylist">
   <h1 *ngIf="myPlaylist.size === 0">Your playlist is empty</h1>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
 </div>
 
 <ion-content>
+
   <ion-list>
     <ion-item-sliding *ngFor="#song of myPlaylist">
       <ion-item (click)="playSong(song)">

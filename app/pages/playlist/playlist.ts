@@ -10,8 +10,9 @@ import {Song} from '../../song'
 })
 export class PlaylistPage {
   selectedSong: any;
-  myPlaylist: Set<{}>;
+  myPlaylist: Song[];
   currentSong: Song;
+  searchQuery: string = '';
 
   constructor(
     private nav: NavController,
@@ -20,6 +21,24 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
   ){
     this.selectedSong = navParams.get('song');
+  }
+
+  getItems(searchbar) {
+    // Reset items back to all of the songs
+    this.myPlaylist = Array.from(this._playlistService.playlist)
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+    // if the value is an empty string don't filter the songs
+    if (q.trim() == '') {
+      return;
+    }
+
+    this.myPlaylist = this.myPlaylist.filter((song) => {
+      if (song.artist.toLowerCase().indexOf(q.toLowerCase()) > -1 || song.title.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    })
   }
 
   confirmClear() {
@@ -69,11 +88,11 @@ export class PlaylistPage {
 
   getPlaylist() {
     if (this._playlistService.playlistFromApi) {
-      this.myPlaylist = this._playlistService.playlist;
+      this.myPlaylist = Array.from(this._playlistService.playlist);
     } else {
       this._playlistService.getPlaylist()
          .subscribe(
-           songs => this.myPlaylist = this._playlistService.playlist,
+           songs => this.myPlaylist = Array.from(this._playlistService.playlist),
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
          );
     }
