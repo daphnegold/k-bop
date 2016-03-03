@@ -2,6 +2,7 @@
 
   <ion-slide style="background-color: black">
     <button outline light large *ngIf="!loggedIn()" (click)="login()">LOGIN</button>
+    <button outline light large *ngIf="loggedIn()" (click)="goToHome()">Enter</button>
     <!-- <img src="images/heart-hands.jpeg" /> -->
   </ion-slide>
 
