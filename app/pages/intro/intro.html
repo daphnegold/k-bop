@@ -1,12 +1,11 @@
 <ion-slides pager>
 
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
-    <button full *ngIf="!loggedIn()" (click)="login()">Login</button>
-    <!-- <img src="images/slide1.png" /> -->
+  <ion-slide style="background-color: black">
+    <button outline light large *ngIf="!loggedIn()" (click)="login()">LOGIN</button>
+    <!-- <img src="images/heart-hands.jpeg" /> -->
   </ion-slide>
 
-  <ion-slide style="background-color: blue">
+  <ion-slide style="background-color: purple">
     <h2>Slide 2</h2>
     <!-- <img src="images/slide2.png" /> -->
   </ion-slide>
@@ -20,7 +19,7 @@
     </ion-row>
     <ion-row>
         <ion-col>
-            <button full (click)="goToHome()">Start Using My App</button>
+            <button outline dark (click)="goToHome()">Let's go!</button>
         </ion-col>
     </ion-row>
   </ion-slide>
