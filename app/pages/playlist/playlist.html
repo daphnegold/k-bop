@@ -1,22 +1,19 @@
-<ion-navbar *navbar nothing>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <!-- <ion-title>Playlist</ion-title> -->
-  <ion-buttons end>
-    <div *ngIf="myPlaylist">
-      <button outline dark *ngIf="myPlaylist.length > 0" (click)="confirmClear()">Clear</button>
-    </div>
-  </ion-buttons>
-  <!-- <ion-buttons end>
-    <button outline light *ngIf="myPlaylist.size > 0">Save to Spotify</button>
-  </ion-buttons> -->
+<ion-navbar>
+  <div *ngIf="myPlaylist">
+    <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
+  </div>
 </ion-navbar>
+
+<div *ngIf="myPlaylist">
+  <ion-buttons end>
+    <button clear *ngIf="myPlaylist.length > 0" (click)="confirmClear()">Clear</button>
+    <button clear *ngIf="myPlaylist.length > 0">Open in Spotify</button>
+  </ion-buttons>
+</div>
 
 <h2 *ngIf="!myPlaylist">Loading...</h2>
 <div *ngIf="myPlaylist">
   <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
-  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
 </div>
 
 <ion-content>
@@ -31,21 +28,14 @@
         </div>
         <ion-icon clear *ngIf="nowPlaying(song)" name="pause"></ion-icon>
         <ion-icon clear *ngIf="!nowPlaying(song)" name="play"></ion-icon>
-        <!-- <ion-icon clear item-right name="md-musical-note" [ngClass]="{playing: nowPlaying(song)}"></ion-icon> -->
       </ion-item>
       <ion-item-options>
         <button danger (click)="deleteSong(song)">
           <ion-icon name="delete"></ion-icon>
           Delete
         </button>
-        <!-- <button primary (click)="songTapped($event, song)">
-          <ion-icon name="details"></ion-icon>
-          Details
-        </button> -->
-    </ion-item-options>
+      </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <!-- <div *ngIf="selectedSong" padding>
-    You navigated here from <b>{{selectedSong.title}}</b>
-  </div> -->
+
 </ion-content>

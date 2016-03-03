@@ -1,5 +1,5 @@
 import {Page, NavController} from 'ionic-framework/ionic';
-import {HomePage} from '../home/home';
+import {TabsPage} from '../tabs/tabs';
 import {LoginService} from '../../login.service';
 
 @Page({
@@ -11,7 +11,7 @@ export class IntroPage {
 
   goToHome(){
     if (this.loggedIn()) {
-      this.nav.setRoot(HomePage);
+      this.nav.setRoot(TabsPage);
     } else {
       this.nav.setRoot(IntroPage)
     }

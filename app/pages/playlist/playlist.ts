@@ -96,15 +96,6 @@ export class PlaylistPage {
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
          );
     }
-
-    // return this.myPlaylist = this._playlistService.getPlaylist();
-
-    // return this._playlistService.getPlaylist()
-    //   .then(
-    //     songs => {
-    //       this.myPlaylist = songs;
-    //       console.log(this.myPlaylist);
-    //   });
   }
 
   onPageLoaded() {
