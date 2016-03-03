@@ -19,7 +19,9 @@
   "description": "k-bop: An Ionic project",
   "cordovaPlugins": [
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-x-toast",
+    "cordova-plugin-shake"
   ],
   "cordovaPlatforms": [
     "android",
