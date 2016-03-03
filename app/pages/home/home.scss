@@ -1,9 +1,5 @@
 .home {
 
-  .toolbar-background {
-    background-color: transparent !important;
-  }
-
   p {
     margin: 20px 0;
     line-height: 22px;
@@ -12,14 +8,10 @@
 
 }
 
-.deciders {
+ion-navbar-section {
+  display: none !important;
+}
 
-  button {
-    height: 100px;
-  }
-
-  ion-icon {
-    font-size: 100px;
-  }
-
+.toolbar-background {
+  background-color: transparent !important;
 }

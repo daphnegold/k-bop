@@ -1,21 +1,14 @@
 
-<ion-navbar *navbar nothing class="home">
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <!-- <ion-title>k-bop!</ion-title> -->
-</ion-navbar>
+<ion-navbar></ion-navbar>
 
 
 <ion-content class="home">
   <ion-refresher
-    *ngIf="!currentSong" (refresh)="doRefresh($event, refresher)" refreshingText="Loading..." refreshingIcon="">
+    *ngIf="!currentSong"
+    (refresh)="doRefresh($event, refresher)"
+    refreshingText="Loading..."
+    refreshingIcon="">
   </ion-refresher>
-
-  <!-- <p>
-    <button primary menuToggle>Toggle Menu</button>
-  </p> -->
-  <!-- <h1 *ngIf="!currentSong && refresherPulled">K-Pop is coming right up!</h1> -->
 
   <ion-card *ngIf="currentSong">
     <ion-item>
@@ -30,15 +23,6 @@
     <ion-card-content>
       <h4>{{ currentSong.title }}</h4>
     </ion-card-content>
-
-    <!-- <ion-item class="deciders">
-        <button dark clear round item-left (click)="decide(false)">
-          <ion-icon name="sad"></ion-icon>
-        </button>
-        <button dark clear round item-right (click)="decide(true)">
-          <ion-icon name="happy"></ion-icon>
-        </button>
-    </ion-item> -->
 
     <ion-item>
       <button primary clear item-left>

@@ -1,5 +1,4 @@
 import {Page, NavController} from 'ionic-framework/ionic';
-// import {LoginService} from '../../login.service';
 import {PlaylistService} from '../../playlist.service';
 import {SongService} from '../../song.service';
 import {HammerService} from '../../hammer.service';
@@ -14,8 +13,6 @@ export class HomePage {
   currentSong: Song;
   pullable: boolean = true;
   refresherPulled: boolean;
-  // hammertime: any;
-  // cardElement: any;
 
   constructor(
     private _playlistService: PlaylistService,
@@ -24,9 +21,6 @@ export class HomePage {
     private nav: NavController) { }
 
    onPageDidEnter() {
-    //  this.cardElement = document.getElementById('swiperrific');
-    //  this.hammertime = new Hammer(this.cardElement);
-
      this._hammerService.swipeInit();
      this._hammerService.hammertime.on('swiperight', (event) => {
        if (this._songService.songs) {
@@ -144,14 +138,6 @@ export class HomePage {
        console.error(error);
      });
    }
-
-  // loggedIn() {
-  //   return this._loginService.loggedIn();
-  // }
-  //
-  // login() {
-  //   this._loginService.login();
-  // }
 
   doRefresh(refresher) {
     if (this.pullable) {
