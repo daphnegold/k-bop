@@ -2,10 +2,10 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Playlist</ion-title>
+  <!-- <ion-title>Playlist</ion-title> -->
   <ion-buttons end>
     <div *ngIf="myPlaylist">
-      <button outline light *ngIf="myPlaylist.size > 0" (click)="confirmClear()">Clear</button>
+      <button outline dark *ngIf="myPlaylist.length > 0" (click)="confirmClear()">Clear</button>
     </div>
   </ion-buttons>
   <!-- <ion-buttons end>
@@ -13,11 +13,9 @@
   </ion-buttons> -->
 </ion-navbar>
 
-<div>
-  <h1 *ngIf="!myPlaylist">Your playlist is loading...</h1>
-</div>
+<h2 *ngIf="!myPlaylist">Loading...</h2>
 <div *ngIf="myPlaylist">
-  <h1 *ngIf="myPlaylist.size === 0">Your playlist is empty</h1>
+  <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
 </div>
 
