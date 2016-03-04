@@ -5,4 +5,5 @@ export interface Song {
   preview: string;
   image_large: string;
   spotify_url: string;
+  likes: number;
 }
