@@ -20,7 +20,7 @@ export class HomePage {
     private _hammerService: HammerService,
     private nav: NavController) { }
 
-   onPageDidEnter() {
+   onPageWillEnter() {
      this._hammerService.swipeInit();
      this._hammerService.hammertime.on('swiperight', (event) => {
        if (this._songService.songs) {
@@ -38,6 +38,7 @@ export class HomePage {
      console.log(this._hammerService.hammertime);
 
      if (this._songService.songs) {
+       this._songService.removeAudio();
        this.currentSong = this._songService.songs[0];
 
        if (!this._songService.audio) {

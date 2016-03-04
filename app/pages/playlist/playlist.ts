@@ -98,7 +98,8 @@ export class PlaylistPage {
     }
   }
 
-  onPageDidEnter() {
+  onPageWillEnter() {
+    this._songService.removeAudio();
     this.getPlaylist();
   }
 
@@ -137,7 +138,7 @@ export class PlaylistPage {
   }
 
   nowPlaying(song) {
-    if (song === this.currentSong && !this._songService.paused) {
+    if (song === this.currentSong && !this._songService.paused && this._songService.audio) {
       return true;
     }
   }
