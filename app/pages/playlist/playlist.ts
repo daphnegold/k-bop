@@ -19,7 +19,7 @@ export class PlaylistPage {
     navParams: NavParams,
     private _songService: SongService,
     private _playlistService: PlaylistService
-  ){
+    ){
     this.selectedSong = navParams.get('song');
   }
 
