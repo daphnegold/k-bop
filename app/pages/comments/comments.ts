@@ -40,11 +40,11 @@ export class CommentsModal {
 
   onSubmit(value: string) {
     if(this.commentForm.valid) {
+      this.dismiss();
       this.addComment(value["comment"]);
       this.song.comments.push(value["comment"]);
 
       console.log('Submitted value: ', value);
-      this.dismiss();
       // this.active = false;
       // setTimeout(()=> this.active = true, 0);
     }
