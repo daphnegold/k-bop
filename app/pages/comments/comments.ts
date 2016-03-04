@@ -41,6 +41,7 @@ export class CommentsModal {
   onSubmit(value: string) {
     if(this.commentForm.valid) {
       this.addComment(value["comment"]);
+      this.song.comments.push(value["comment"]);
 
       console.log('Submitted value: ', value);
       this.dismiss();

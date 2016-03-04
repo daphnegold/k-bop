@@ -1,8 +1,9 @@
-import {Page, Alert, NavController, NavParams} from 'ionic-framework/ionic';
+import {Page, Alert, NavController, NavParams, Modal} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
 import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
 import {Song} from '../../song'
+import {CommentsModal} from '../comments/comments';
 
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
@@ -21,6 +22,11 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
     ){
     this.selectedSong = navParams.get('song');
+  }
+
+  showModal(songInfo) {
+    let modal = Modal.create(CommentsModal, songInfo);
+    this.nav.present(modal)
   }
 
   getItems(searchbar) {

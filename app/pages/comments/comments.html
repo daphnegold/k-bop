@@ -26,15 +26,12 @@
           </ion-item>
           <button block clear type="submit" [disabled]="!comment.value || !commentForm.valid">Submit</button>
         </form>
-        <p>
+        <!-- <p>
           TODO: remove this: {{ comment.value }}
-        </p>
+        </p> -->
 
-        <!-- <ion-item *ngFor="#item of character['items']">
-          {{item.title}}
-          <ion-note item-right>
-            {{item.note}}
-          </ion-note>
-        </ion-item> -->
+        <ion-item *ngFor="#comment of song.comments">
+          {{ comment }}
+        </ion-item>
     </ion-list>
   </ion-content>

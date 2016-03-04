@@ -6,4 +6,5 @@ export interface Song {
   image_large: string;
   spotify_url: string;
   likes: number;
+  comments: Array<string>;
 }

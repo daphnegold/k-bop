@@ -41,7 +41,7 @@
       </button>
       <button primary clear item-left (click)="showModal({mySong: currentSong})">
         <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
+        <div>{{ currentSong.comments.length }} Comments</div>
       </button>
     </ion-item>
   </ion-card>
