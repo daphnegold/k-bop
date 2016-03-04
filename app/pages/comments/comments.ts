@@ -1,5 +1,5 @@
 import {Page, ViewController, NavParams} from 'ionic-framework/ionic';
-import {FormBuilder,  ControlGroup, Validators, AbstractControl} from 'angular2/common';
+import {FormBuilder, ControlGroup, Validators, AbstractControl} from 'angular2/common';
 import {Song} from '../../song';
 
 @Page({

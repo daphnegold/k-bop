@@ -25,7 +25,7 @@ export class PlaylistPage {
 
   getItems(searchbar) {
     // Reset items back to all of the songs
-    this.myPlaylist = Array.from(this._playlistService.playlist)
+    this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
     // set q to the value of the searchbar
     var q = searchbar.value;
     // if the value is an empty string don't filter the songs
@@ -88,11 +88,11 @@ export class PlaylistPage {
 
   getPlaylist() {
     if (this._playlistService.playlistFromApi) {
-      this.myPlaylist = Array.from(this._playlistService.playlist);
+      this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
     } else {
       this._playlistService.getPlaylist()
          .subscribe(
-           songs => this.myPlaylist = Array.from(this._playlistService.playlist),
+           songs => this.myPlaylist = Array.from(this._playlistService.playlist).reverse(),
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
          );
     }
