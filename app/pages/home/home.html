@@ -31,7 +31,7 @@
         <ion-icon name="heart"></ion-icon>
         <div>{{ currentSong.likes }} Likes</div>
       </button>
-      <button primary clear item-left>
+      <button primary clear item-left (click)="showModal({mySong: currentSong})">
         <ion-icon name="text"></ion-icon>
         <div>4 Comments</div>
       </button>

@@ -1,8 +1,9 @@
-import {Page, NavController} from 'ionic-framework/ionic';
+import {Page, NavController, Modal} from 'ionic-framework/ionic';
 import {PlaylistService} from '../../playlist.service';
 import {SongService} from '../../song.service';
 import {HammerService} from '../../hammer.service';
 import {Song} from '../../song'
+import {CommentsModal} from '../comments/comments';
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
@@ -19,6 +20,11 @@ export class HomePage {
     private _songService: SongService,
     private _hammerService: HammerService,
     private nav: NavController) { }
+
+  showModal(songInfo) {
+    let modal = Modal.create(CommentsModal, songInfo);
+    this.nav.present(modal)
+  }
 
    onPageWillEnter() {
      this._hammerService.swipeInit();
