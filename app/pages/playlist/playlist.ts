@@ -98,7 +98,7 @@ export class PlaylistPage {
     }
   }
 
-  onPageLoaded() {
+  onPageDidEnter() {
     this.getPlaylist();
   }
 
