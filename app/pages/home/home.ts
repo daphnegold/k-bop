@@ -121,7 +121,6 @@ export class HomePage {
          );
      }
 
-     this.removeAudio();
      let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
      this.currentSong = this._songService.songs[randomNumber];
 

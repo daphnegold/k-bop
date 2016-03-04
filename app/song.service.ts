@@ -82,7 +82,11 @@ export class SongService {
     this.played = false;
     console.log("start new song");
     return new Promise((resolve, reject) => {
-      this.audio = new Audio(current.preview);
+      if (!this.audio) {
+        this.audio = new Audio();
+        console.log("new audio object")
+      }
+      this.audio.src = current.preview;
       this.audio.autoplay = true;
       this.audio.onerror = reject;
       this.audio.onended = resolve;
