@@ -63,16 +63,18 @@ export class HomePage {
        console.log(this._songService.songs.length)
      }
 
-     if (!this._songService.songs || this._songService.songs.length < 3) {
+     if (!this._songService.songs || this._songService.songs.length < 10) {
 
        this._songService.getSongs()
           .subscribe(
             songs => {
               this._songService.songs = songs;
-              this.currentSong = this._songService.songs[0];
+              if (!this.currentSong) {
+                this.currentSong = this._songService.songs[0];
 
-              if (!this._songService.audio) {
-                this.songTime();
+                if (!this._songService.audio) {
+                  this.songTime();
+                }
               }
 
               console.log(this.currentSong)},
@@ -114,6 +116,13 @@ export class HomePage {
    }
 
    decide(choice) {
+     this._songService.songs.splice(this._songService.songs.indexOf(this.currentSong), 1);
+     console.log(this._songService.songs.length);
+
+     if (this._songService.songs.length < 10) {
+       this.getSongs();
+     }
+
      if (choice) {
        let addedSong = this.currentSong
        this._songService.addSong(addedSong.uri)
