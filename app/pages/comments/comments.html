@@ -17,7 +17,7 @@
           <p>{{ song.artist }}</p>
         </ion-item>
 
-        <form *ngIf="active" [ngFormModel]="commentForm" (submit)="onSubmit(commentForm.value)">
+        <form [ngFormModel]="commentForm" (submit)="onSubmit(commentForm.value)">
           <ion-item>
             <ion-label floating>Leave a Comment</ion-label>
             <ion-input type="text"

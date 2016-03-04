@@ -79,6 +79,7 @@ export class PlaylistPage {
       .subscribe(
         data => {
           this._playlistService.playlist.delete(deletedSong);
+          this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
           console.log("Server response:");
           console.log(data);
         },

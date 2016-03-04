@@ -16,18 +16,18 @@
   <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
 </div>
 
-<ion-content>
+<ion-content class="playlist">
 
   <ion-list>
-    <ion-item-sliding *ngFor="#song of myPlaylist">
+    <ion-item-sliding *ngFor="#song of myPlaylist" [ngClass]="{selected: nowPlaying(song)}">
       <ion-item (click)="playSong(song)">
         <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
-        <div id="info">
-          <h3>{{song.title}}</h3>
-          <p>{{song.artist}}</p>
-        </div>
-        <ion-icon clear *ngIf="nowPlaying(song)" name="pause"></ion-icon>
-        <ion-icon clear *ngIf="!nowPlaying(song)" name="play"></ion-icon>
+        <h3>{{song.title}}</h3>
+        <p>{{song.artist}}</p>
+        <button dark clear item-right>
+          <ion-icon *ngIf="nowPlaying(song)" name="pause"></ion-icon>
+          <ion-icon *ngIf="!nowPlaying(song)" name="play"></ion-icon>
+        </button>
       </ion-item>
       <ion-item-options>
         <button danger (click)="deleteSong(song)">

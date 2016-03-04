@@ -1,16 +1,11 @@
-.ion-md-play, .ion-md-pause {
-  float: right;
-}
-
-.ion-md-play, .ion-md-pause, #info {
-  display: inline-block;
-}
-
-#info {
-  max-width: 85%;
+.playlist {
 
   h3 {
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .selected {
+    border-left: 10px solid #ff369b;
   }
 }

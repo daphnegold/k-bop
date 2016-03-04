@@ -25,7 +25,7 @@ export class LoginService {
 
         this.local.set('id', success["user"]);
         this.local.set('expiration', expiration);
-        alert("Hi " + success["user"]);
+        // alert("Hi " + success["user"]);
       }, (error) => {
         alert(error);
       });
