@@ -22,10 +22,12 @@ export class LoginService {
     this.platform.ready().then(() => {
       this.backendLogin().then((success) => {
         var expiration = new Date().getTime() + 3600000
+        // facebook weirdness with "_#_"
+        var uid = success["user"].split('#')[0]
 
-        this.local.set('id', success["user"]);
+        this.local.set('id', uid);
         this.local.set('expiration', expiration);
-        // alert("Hi " + success["user"]);
+        // alert("Hi " + uid);
       }, (error) => {
         alert(error);
       });
