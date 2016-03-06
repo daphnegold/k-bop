@@ -1,7 +1,6 @@
 import {App, IonicApp, Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
 import {IntroPage} from './pages/intro/intro';
 import {TabsPage} from './pages/tabs/tabs';
-import {GridPage} from './pages/grid/grid';
 import {PlaylistService} from './playlist.service';
 import {SongService} from './song.service';
 
@@ -32,14 +31,6 @@ class MyApp {
     });
 
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    // this.pages = [
-    //   { title: 'Home', component: HomePage },
-    //   { title: 'Playlist', component: PlaylistPage },
-    //   // { title: 'Grid Icons', component: GridPage }
-    // ];
-
   }
 
   initializeApp() {

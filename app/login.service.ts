@@ -1,11 +1,12 @@
-import {Platform, Storage, LocalStorage} from 'ionic-framework/ionic';
+import {Platform, Storage, LocalStorage, NavController} from 'ionic-framework/ionic';
 import {Injectable} from 'angular2/core';
+import {TabsPage} from './pages/tabs/tabs';
 
 @Injectable()
 export class LoginService {
   local: Storage = new Storage(LocalStorage);
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private nav: NavController) {
     this.platform = platform;
   }
 
@@ -21,8 +22,9 @@ export class LoginService {
   login() {
     this.platform.ready().then(() => {
       this.backendLogin().then((success) => {
+        this.nav.setRoot(TabsPage)
         var expiration = new Date().getTime() + 3600000
-        // facebook weirdness with "_#_"
+        // facebook weirdness with "_#_"P
         var uid = success["user"].split('#')[0]
 
         this.local.set('id', uid);
