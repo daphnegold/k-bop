@@ -1,15 +1,19 @@
 <ion-navbar>
   <div *ngIf="myPlaylist">
-    <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
+    <ion-searchbar *ngIf="showSearch"
+      [(ngModel)]="searchQuery"
+      (input)="getItems($event)"
+      (cancel)="toggleSearch(false)">
+    </ion-searchbar>
+    <ion-buttons start>
+      <button clear *ngIf="myPlaylist.length > 0 && !showSearch" (click)="toggleSearch(true)"><ion-icon name="search"></ion-icon></button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button clear *ngIf="myPlaylist.length > 0 && !showSearch" (click)="confirmClear()">Clear</button>
+      <button clear *ngIf="myPlaylist.length > 0 && !showSearch">Open in Spotify</button>
+    </ion-buttons>
   </div>
 </ion-navbar>
-
-<div *ngIf="myPlaylist">
-  <ion-buttons end>
-    <button clear *ngIf="myPlaylist.length > 0" (click)="confirmClear()">Clear</button>
-    <button clear *ngIf="myPlaylist.length > 0">Open in Spotify</button>
-  </ion-buttons>
-</div>
 
 <div *ngIf="!myPlaylist" class="spinner">
   <div class="rect1"></div>
@@ -23,7 +27,7 @@
   <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
 </div>
 
-<ion-content class="playlist animated slideInRight">
+<ion-content *ngIf="myPlaylist" class="playlist animated slideInRight">
 
   <ion-list>
     <ion-item-sliding *ngFor="#song of myPlaylist" [ngClass]="{selected: nowPlaying(song)}">

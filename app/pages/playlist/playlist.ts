@@ -14,6 +14,7 @@ export class PlaylistPage {
   myPlaylist: Song[];
   currentSong: Song;
   searchQuery: string = '';
+  showSearch: boolean;
 
   constructor(
     private nav: NavController,
@@ -22,6 +23,14 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
     ){
     this.selectedSong = navParams.get('song');
+  }
+
+  toggleSearch(bool) {
+    if (bool) {
+      this.showSearch = true;
+    } else {
+      this.showSearch = false;
+    }
   }
 
   showModal(songInfo) {
