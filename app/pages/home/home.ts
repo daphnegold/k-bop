@@ -14,6 +14,8 @@ export class HomePage {
   currentSong: Song;
   pullable: boolean = true;
   refresherPulled: boolean;
+  lastSongChoice: boolean;
+  hideImage: boolean = false;
 
   constructor(
     private _playlistService: PlaylistService,
@@ -31,12 +33,22 @@ export class HomePage {
      this._hammerService.hammertime.on('swiperight', (event) => {
        if (this._songService.songs) {
          console.log('Swipe right');
+         setTimeout(() => {
+           this.hideImage = true;
+         }, 500);
+         this.currentSong.decided = true;
+         this.currentSong.choice = true;
          this.decide(true);
        }
      });
      this._hammerService.hammertime.on('swipeleft', (event) => {
        if (this._songService.songs) {
          console.log('Swipe left');
+         setTimeout(() => {
+           this.hideImage = true;
+         }, 500);
+         this.currentSong.decided = true;
+         this.currentSong.choice = false;
          this.decide(false);
        }
      });
@@ -137,9 +149,12 @@ export class HomePage {
      }
 
      let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
-     this.currentSong = this._songService.songs[randomNumber];
-
-     this.songTime();
+     let nextSong = this._songService.songs[randomNumber];
+     setTimeout(() => {
+       this.hideImage = false;
+       this.currentSong = nextSong;
+       this.songTime();
+     }, 500);
    }
 
    songTime() {

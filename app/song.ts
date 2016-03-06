@@ -7,4 +7,6 @@ export interface Song {
   spotify_url: string;
   likes: number;
   comments: Array<string>;
+  decided: boolean;
+  choice: boolean;
 }
