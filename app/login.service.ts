@@ -44,7 +44,6 @@ export class LoginService {
       // if (token) { url += "?uid=" + token }
 
       var browserRef = window.cordova.InAppBrowser.open(url, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
-
       browserRef.addEventListener("loadstart", (event) => {
 
         // http://kbop.herokuapp.com/status?user=darkwingdaphne
