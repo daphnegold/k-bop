@@ -23,7 +23,7 @@
   <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
 </div>
 
-<ion-content class="playlist">
+<ion-content class="playlist animated slideInRight">
 
   <ion-list>
     <ion-item-sliding *ngFor="#song of myPlaylist" [ngClass]="{selected: nowPlaying(song)}">

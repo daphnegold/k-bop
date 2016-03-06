@@ -79,8 +79,10 @@ export class PlaylistPage {
   }
 
   deleteSong(song) {
-    this._songService.removeAudio();
     let deletedSong = song;
+    this._songService.removeAudio();
+    this.myPlaylist.splice(this.myPlaylist.indexOf(song), 1)
+
     this._playlistService.deleteSong(deletedSong.uri)
       .subscribe(
         data => {
@@ -89,7 +91,10 @@ export class PlaylistPage {
           console.log("Server response:");
           console.log(data);
         },
-        error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+        error => {
+          console.log(<any>error);
+          this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
+          alert("Something has gone wrong, please try again later"); }
       );
   }
 
