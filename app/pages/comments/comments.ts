@@ -2,6 +2,7 @@ import {Page, ViewController, NavParams} from 'ionic-framework/ionic';
 import {FormBuilder, ControlGroup, Validators, AbstractControl} from 'angular2/common';
 import {Song} from '../../song';
 import {CommentService} from '../../comment.service';
+import {Storage, LocalStorage} from 'ionic-framework/ionic';
 
 @Page({
   templateUrl: 'build/pages/comments/comments.html',
@@ -11,6 +12,7 @@ export class CommentsModal {
   commentForm: ControlGroup;
   comment: AbstractControl;
   song: Song;
+  local: Storage = new Storage(LocalStorage);
   // active: boolean = true;
 
   constructor(private viewCtrl: ViewController,
@@ -40,9 +42,11 @@ export class CommentsModal {
 
   onSubmit(value: string) {
     if(this.commentForm.valid) {
+      let display = this.local.get('display')._result;
+
       this.dismiss();
       this.addComment(value["comment"]);
-      this.song.comments.push(value["comment"]);
+      this.song.comments.push({ display_name: display, text: value["comment"] });
 
       console.log('Submitted value: ', value);
       // this.active = false;
