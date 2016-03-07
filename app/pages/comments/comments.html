@@ -30,8 +30,9 @@
           TODO: remove this: {{ comment.value }}
         </p> -->
 
-        <ion-item *ngFor="#text of song.comments">
-          {{ text }}
+        <ion-item *ngFor="#comment of song.comments">
+          <h3>{{ comment.display_name }}</h3>
+          <p>{{ comment.text }}</p>
         </ion-item>
     </ion-list>
   </ion-content>

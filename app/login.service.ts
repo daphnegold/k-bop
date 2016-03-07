@@ -26,8 +26,10 @@ export class LoginService {
         var expiration = new Date().getTime() + 3600000
         // facebook weirdness with "_#_"P
         var uid = success["user"].split('#')[0]
+        var display = success["display"]
 
         this.local.set('id', uid);
+        this.local.set('display', display)
         this.local.set('expiration', expiration);
         // alert("Hi " + uid);
       }, (error) => {
@@ -51,9 +53,12 @@ export class LoginService {
           browserRef.removeEventListener("exit", (event) => {});
           browserRef.close();
 
+          // http://localhost:3000/status?display=darkwingdaphne&user=darkwingdaphne
+          var responseParameters = ((event.url).split("?")[1]).split("&");
           var parsedResponse = {};
-          var responseParameters = ((event.url).split("?")[1]).split("=");
-          parsedResponse[responseParameters[0]] = responseParameters[1];
+          for (var i = 0; i < responseParameters.length; i++) {
+              parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+          }
 
           if (parsedResponse["user"] !== undefined && parsedResponse["user"] !== null) {
             resolve(parsedResponse);
