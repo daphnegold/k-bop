@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class SongService {
-  private _songsUrl = "http://kbop.herokuapp.com/recs";
+  private _songsUrl = "http://kbop.herokuapp.com/recs/";
   private _addUrl = "http://kbop.herokuapp.com/add"
   local: Storage = new Storage(LocalStorage);
   audio: any;
@@ -21,8 +21,8 @@ export class SongService {
   constructor(private http: Http) { }
 
   addSong(songUri: string) : Observable<Song>  {
-    let uid = this.local.get('id')._result;
-    let body = JSON.stringify({ "data": { uri: songUri, user: uid } });
+    let user_id = this.local.get('id')._result;
+    let body = JSON.stringify({ "data": { uri: songUri, uid: user_id } });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -33,8 +33,9 @@ export class SongService {
 
   getSongs () {
     console.log('calling api');
+    let user_id = this.local.get('id')._result;
 
-    return this.http.get(this._songsUrl)
+    return this.http.get(this._songsUrl + user_id)
       .map(res => <Song[]> res.json())
       .do(data => console.log(data))
       .catch(this.handleError);
