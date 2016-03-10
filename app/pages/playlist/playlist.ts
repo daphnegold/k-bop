@@ -129,7 +129,8 @@ export class PlaylistPage {
         },
         error => {
           console.log(<any>error);
-          this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
+          deletedSong.deleted = false;
+          // this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
           alert("Something has gone wrong, please try again later"); }
       );
   }
