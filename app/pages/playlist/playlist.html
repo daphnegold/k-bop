@@ -28,27 +28,30 @@
 <ion-content *ngIf="myPlaylist" class="playlist animated slideInRight">
 
   <ion-list>
-    <ion-item-sliding *ngFor="#song of myPlaylist | sort" [ngClass]="{selected: nowPlaying(song)}">
-      <ion-item (click)="playSong(song)">
-        <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
-        <h3>{{song.title}}</h3>
-        <p>{{song.artist}}</p>
-        <button dark clear item-right>
-          <ion-icon *ngIf="nowPlaying(song)" name="pause"></ion-icon>
-          <ion-icon *ngIf="!nowPlaying(song)" name="play"></ion-icon>
-        </button>
-      </ion-item>
-      <ion-item-options>
-        <button danger (click)="deleteSong(song)">
-          <ion-icon name="delete"></ion-icon>
-          Delete
-        </button>
-        <button primary (click)="showModal({mySong: song})">
-          <ion-icon name="comments"></ion-icon>
-          Comments
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <span *ngFor="#song of myPlaylist | sort">
+      <ion-item-divider light *ngIf="artistDiff(song)">{{song.artist}}</ion-item-divider>
+      <ion-item-sliding [ngClass]="{selected: nowPlaying(song)}">
+        <ion-item (click)="playSong(song)">
+          <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
+          <h3>{{song.title}}</h3>
+          <p>{{song.artist}}</p>
+          <button dark clear item-right>
+            <ion-icon *ngIf="nowPlaying(song)" name="pause"></ion-icon>
+            <ion-icon *ngIf="!nowPlaying(song)" name="play"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item-options>
+          <button danger (click)="deleteSong(song)">
+            <ion-icon name="delete"></ion-icon>
+            Delete
+          </button>
+          <button primary (click)="showModal({mySong: song})">
+            <ion-icon name="comments"></ion-icon>
+            Comments
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </span>
   </ion-list>
 
 </ion-content>

@@ -9,7 +9,7 @@ import {PlaylistSortPipe} from '../../sort.pipe';
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
   providers: [LoginService],
-  pipes: [ PlaylistSortPipe ]
+  pipes: [PlaylistSortPipe]
 })
 export class PlaylistPage {
   selectedSong: any;
@@ -17,6 +17,8 @@ export class PlaylistPage {
   currentSong: Song;
   searchQuery: string = '';
   showSearch: boolean;
+  nowArtist: string;
+  lastArtist: string;
 
   constructor(
     private nav: NavController,
@@ -25,6 +27,25 @@ export class PlaylistPage {
     private _playlistService: PlaylistService
     ){
     this.selectedSong = navParams.get('song');
+  }
+
+  onPageWillEnter() {
+    this._songService.removeAudio();
+    this.getPlaylist();
+  }
+
+  onPageWillLeave() {
+    this.nowArtist = null;
+    this.lastArtist = null;
+    this.myPlaylist = null;
+  }
+
+  artistDiff(song) {
+    this.nowArtist = song.artist;
+    if (this.lastArtist !== this.nowArtist) {
+      this.lastArtist = this.nowArtist;
+      return true
+    }
   }
 
   toggleSearch(bool) {
@@ -119,11 +140,6 @@ export class PlaylistPage {
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
          );
     }
-  }
-
-  onPageWillEnter() {
-    this._songService.removeAudio();
-    this.getPlaylist();
   }
 
   // songTapped(event, song) {

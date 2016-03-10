@@ -7,9 +7,9 @@ import {Song} from "./song";
 export class PlaylistSortPipe {
   transform(array: Song[], args: Song): Song[] {
     array.sort((a: any, b: any) => {
-      if (a.artist < b.artist) {
+      if (a.artist.toLowerCase() < b.artist.toLowerCase()) {
         return -1;
-      } else if (a.artist > b.artist) {
+      } else if (a.artist.toLowerCase() > b.artist.toLowerCase()) {
         return 1;
       } else {
         return 0;
