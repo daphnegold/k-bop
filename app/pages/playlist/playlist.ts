@@ -4,10 +4,12 @@ import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
 import {Song} from '../../song'
 import {CommentsModal} from '../comments/comments';
+import {PlaylistSortPipe} from '../../sort.pipe';
 
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
-  providers: [LoginService]
+  providers: [LoginService],
+  pipes: [ PlaylistSortPipe ]
 })
 export class PlaylistPage {
   selectedSong: any;
