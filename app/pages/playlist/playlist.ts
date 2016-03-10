@@ -35,6 +35,10 @@ export class PlaylistPage {
   }
 
   onPageWillLeave() {
+    this.resetSort();
+  }
+
+  resetSort() {
     this.nowArtist = null;
     this.lastArtist = null;
     this.myPlaylist = null;
@@ -111,15 +115,15 @@ export class PlaylistPage {
   }
 
   deleteSong(song) {
+    song.deleted = true;
     let deletedSong = song;
     this._songService.removeAudio();
-    this.myPlaylist.splice(this.myPlaylist.indexOf(song), 1)
 
     this._playlistService.deleteSong(deletedSong.uri)
       .subscribe(
         data => {
           this._playlistService.playlist.delete(deletedSong);
-          this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
+          // this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
           console.log("Server response:");
           console.log(data);
         },

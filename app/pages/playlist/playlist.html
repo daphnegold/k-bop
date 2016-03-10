@@ -25,12 +25,12 @@
   <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
 </div>
 
-<ion-content *ngIf="myPlaylist" class="playlist animated slideInRight">
+<ion-content *ngIf="myPlaylist" class="playlist">
 
   <ion-list>
     <span *ngFor="#song of myPlaylist | sort">
       <ion-item-divider light *ngIf="artistDiff(song)">{{song.artist}}</ion-item-divider>
-      <ion-item-sliding [ngClass]="{selected: nowPlaying(song)}">
+      <ion-item-sliding [ngClass]="{selected: nowPlaying(song), deleted: song.deleted}">
         <ion-item (click)="playSong(song)">
           <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
           <h3>{{song.title}}</h3>
@@ -47,7 +47,7 @@
           </button>
           <button primary (click)="showModal({mySong: song})">
             <ion-icon name="comments"></ion-icon>
-            Comments
+            {{song.comments.length}} Comments
           </button>
         </ion-item-options>
       </ion-item-sliding>
