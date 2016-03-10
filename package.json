@@ -21,7 +21,11 @@
     "cordova-plugin-inappbrowser",
     "cordova-plugin-whitelist",
     "cordova-plugin-x-toast",
-    "cordova-plugin-shake"
+    "cordova-plugin-shake",
+    {
+      "locator": "https://github.com/apache/cordova-plugin-splashscreen.git",
+      "id": "cordova-plugin-splashscreen"
+    }
   ],
   "cordovaPlatforms": [
     "android",
