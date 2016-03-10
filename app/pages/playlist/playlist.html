@@ -35,9 +35,9 @@
           <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
           <h3>{{song.title}}</h3>
           <p>{{song.artist}}</p>
-          <button dark clear item-right>
-            <ion-icon *ngIf="nowPlaying(song)" name="pause"></ion-icon>
-            <ion-icon *ngIf="!nowPlaying(song)" name="play"></ion-icon>
+          <button dark clear item-right [ngSwitch]="nowPlaying(song)">
+            <ion-icon *ngSwitchWhen="true" name="pause"></ion-icon>
+            <ion-icon *ngSwitchDefault name="play"></ion-icon>
           </button>
         </ion-item>
         <ion-item-options>
