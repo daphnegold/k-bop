@@ -1,4 +1,4 @@
-import {Page, Alert, NavController, NavParams, Modal} from 'ionic-framework/ionic';
+import {Page, Alert, NavController, NavParams, Modal, ActionSheet} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
 import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
@@ -20,6 +20,7 @@ export class PlaylistPage {
   showSearch: boolean;
   nowArtist: string;
   lastArtist: string;
+  actionSheet: any;
 
   constructor(
     private nav: NavController,
@@ -37,6 +38,36 @@ export class PlaylistPage {
 
   onPageWillLeave() {
     this.resetSort();
+  }
+
+  showMenu() {
+    this.actionSheet = ActionSheet.create({
+      title: 'Menu',
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: () => {
+            console.log('Delete clicked');
+          }
+        },
+        {
+          text: 'Open in Spotify',
+          handler: () => {
+            console.log('Open in Spotify clicked');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    this.nav.present(this.actionSheet);
   }
 
   resetSort() {

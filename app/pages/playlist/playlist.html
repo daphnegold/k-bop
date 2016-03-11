@@ -61,6 +61,6 @@
 
 </ion-content>
 
-<button fab primary fab-bottom fab-right>
+<button fab primary fab-bottom fab-right *ngIf="myPlaylist" (click)="showMenu()">
   <ion-icon name='add'></ion-icon>
 </button>
