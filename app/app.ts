@@ -12,7 +12,7 @@ import {Type} from 'angular2/core';
 @App({
   templateUrl: 'build/app.html',
   config: {
-    tabbarPlacement: 'bottom'
+    // tabbarPlacement: 'bottom'
   }, // http://ionicframework.com/docs/v2/api/config/Config/
   providers: [PlaylistService, SongService]
 })
