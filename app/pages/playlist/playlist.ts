@@ -14,6 +14,7 @@ import {PlaylistSortPipe} from '../../sort.pipe';
 export class PlaylistPage {
   selectedSong: any;
   myPlaylist: Song[];
+  myLink: string;
   currentSong: Song;
   searchQuery: string = '';
   showSearch: boolean;
@@ -42,6 +43,10 @@ export class PlaylistPage {
     this.nowArtist = null;
     this.lastArtist = null;
     this.myPlaylist = null;
+  }
+
+  launch() {
+    cordova.InAppBrowser.open(this.myLink, "_system", "location=true");
   }
 
   artistDiff(song) {
@@ -138,6 +143,7 @@ export class PlaylistPage {
           deletedSong.deleted = false;
           // this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
           window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+        }
       );
   }
 
@@ -147,7 +153,10 @@ export class PlaylistPage {
     } else {
       this._playlistService.getPlaylist()
          .subscribe(
-           songs => this.myPlaylist = Array.from(this._playlistService.playlist),
+           data => {
+             this.myPlaylist = Array.from(this._playlistService.playlist);
+             this.myLink = this._playlistService.link;
+           },
            error => {
              console.log(<any>error);
              window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");

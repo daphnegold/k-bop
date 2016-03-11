@@ -12,6 +12,7 @@ export class PlaylistService {
   private _playlistUrl = "http://kbop.herokuapp.com/playlist/"
   private _deleteUrl = "http://kbop.herokuapp.com/user/"
   playlist: Set<{}> = new Set();
+  link: string;
   playlistFromApi: boolean;
   local: Storage = new Storage(LocalStorage);
 
@@ -37,16 +38,18 @@ export class PlaylistService {
     console.log('calling api');
 
     return this.http.get(this._playlistUrl + uid)
-      .map(res => <Song[]> res.json())
-      .do(songs => {
+      .map(res => res.json().data)
+      .do(data => {
         this.playlist = new Set();
         this.playlistFromApi = true;
+        this.link = data.link;
 
-        songs.forEach((song) => {
+        data.songs.forEach((song) => {
           this.playlist.add(song);
         });
 
         console.log(this.playlist);
+        console.log(this.link);
        })
       .catch(this.handleError);
   }
