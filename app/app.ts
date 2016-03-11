@@ -6,8 +6,8 @@ import {SongService} from './song.service';
 
 // https://angular.io/docs/ts/latest/api/core/Type-interface.html
 import {Type} from 'angular2/core';
-import {enableProdMode} from 'angular2/core';
-enableProdMode();
+// import {enableProdMode} from 'angular2/core';
+// enableProdMode();
 
 @App({
   templateUrl: 'build/app.html',

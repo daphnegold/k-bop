@@ -34,9 +34,9 @@
         {{song.artist}}
       </ion-item-divider>
       <ion-item-sliding
-      [ngClass]="{selected: nowPlaying(song),
-        deleted: song.deleted,
-        noshow: !song.searched && showSearch && searchQuery}">
+        [ngClass]="{selected: nowPlaying(song),
+          deleted: song.deleted,
+          noshow: !song.searched && showSearch && searchQuery}">
         <ion-item (click)="playSong(song)">
           <ion-thumbnail item-left><img src={{song.image_large}}></ion-thumbnail>
           <h3>{{song.title}}</h3>
