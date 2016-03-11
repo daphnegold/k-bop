@@ -19,6 +19,14 @@
 
 @import "./animate.min";
 
+.logo .toolbar-title {
+  letter-spacing: 0.1em;
+  color: black;
+   -webkit-text-fill-color: #f4f4f4; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+}
+
 .spinner {
   margin: 100px auto;
   width: 50px;

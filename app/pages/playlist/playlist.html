@@ -1,15 +1,13 @@
-<ion-navbar *navbar>
-  <ion-title class="logo">K-BOP</ion-title>
+<ion-navbar light *navbar>
+  <ion-title class="logo" *ngIf="!showSearch">K-BOP</ion-title>
   <ion-searchbar *ngIf="showSearch && myPlaylist"
     [(ngModel)]="searchQuery"
     (input)="getItems($event)"
     (cancel)="toggleSearch(false)">
   </ion-searchbar>
-  <!-- <ion-buttons end *ngIf="myPlaylist">
-    <button clear *ngIf="myPlaylist.length > 0 && !showSearch" (click)="confirmClear()">Clear</button>
-    <button clear *ngIf="myPlaylist.length > 0 && !showSearch" (click)="launch()">Spotify</button>
-    <button clear *ngIf="myPlaylist.length > 0 && !showSearch" (click)="toggleSearch(true)"><ion-icon name="search"></ion-icon></button>
-  </ion-buttons> -->
+  <ion-buttons end>
+    <button clear *ngIf="!showSearch" (click)="toggleSearch(true)"><ion-icon name="search"></ion-icon></button>
+  </ion-buttons>
 </ion-navbar>
 
 <div *ngIf="!myPlaylist" class="spinner">
