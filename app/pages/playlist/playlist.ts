@@ -42,24 +42,28 @@ export class PlaylistPage {
 
   showMenu() {
     this.actionSheet = ActionSheet.create({
-      title: 'Menu',
       buttons: [
         {
-          text: 'Delete',
+          text: 'Clear playlist',
           role: 'destructive',
           handler: () => {
-            console.log('Delete clicked');
+            this.actionSheet.dismiss()
+            .then(() => {
+              this.confirmClear();
+            });
+            console.log('Clear clicked');
           }
         },
         {
           text: 'Open in Spotify',
           handler: () => {
+            this.launch();
             console.log('Open in Spotify clicked');
           }
         },
         {
           text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
+          role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
