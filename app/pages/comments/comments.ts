@@ -36,7 +36,10 @@ export class CommentsModal {
           console.log("Server response:")
           console.log(data)
         },
-        error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+        error => {
+          console.log(<any>error);
+          window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+        }
       );
    }
 

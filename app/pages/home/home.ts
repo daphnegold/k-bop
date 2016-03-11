@@ -90,7 +90,10 @@ export class HomePage {
              }
 
              console.log(this.currentSong)},
-           error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+           error => {
+             console.log(<any>error);
+             window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+           }
          );
     } else {
       this.currentSong = this._songService.songs[0];
@@ -144,7 +147,10 @@ export class HomePage {
             console.log("Server response:")
             console.log(data)
           },
-          error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+          error => {
+            console.log(<any>error);
+            window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+          }
         );
     }
 
@@ -163,7 +169,7 @@ export class HomePage {
       this._songService.stopSong();
       console.log("Preview complete")
     }, (error) => {
-      alert("Something has gone wrong");
+      window.plugins.toast.show("Something has gone wrong", "short", "bottom");
       this.removeAudio();
       console.error(error);
     });

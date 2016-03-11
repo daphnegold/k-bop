@@ -31,9 +31,9 @@ export class LoginService {
         this.local.set('id', uid);
         this.local.set('display', display)
         this.local.set('expiration', expiration);
-        // alert("Hi " + uid);
+        window.plugins.toast.show("Logged in", "short", "bottom");
       }, (error) => {
-        alert(error);
+        window.plugins.toast.show(error, "short", "bottom");
       });
     });
   }
@@ -68,7 +68,7 @@ export class LoginService {
         }
       });
       browserRef.addEventListener("exit", (event) => {
-        reject("The Spotify sign in was canceled");
+        reject("Sign in canceled");
       });
     });
   }

@@ -108,7 +108,10 @@ export class PlaylistPage {
                   console.log("Server response:");
                   console.log(data);
                 },
-                error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+                error => {
+                  console.log(<any>error);
+                  window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+                }
               );
           }
         }
@@ -134,7 +137,7 @@ export class PlaylistPage {
           console.log(<any>error);
           deletedSong.deleted = false;
           // this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
-          alert("Something has gone wrong, please try again later"); }
+          window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
       );
   }
 
@@ -145,7 +148,10 @@ export class PlaylistPage {
       this._playlistService.getPlaylist()
          .subscribe(
            songs => this.myPlaylist = Array.from(this._playlistService.playlist),
-           error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
+           error => {
+             console.log(<any>error);
+             window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+           }
          );
     }
   }
@@ -177,7 +183,7 @@ export class PlaylistPage {
           this._songService.stopSong();
           console.log("Preview 100% complete")
         }, (error) => {
-          alert("Something has gone wrong");
+          window.plugins.toast.show("Something has gone wrong", "short", "bottom");
           this.removeAudio();
           console.error(error);
         });
