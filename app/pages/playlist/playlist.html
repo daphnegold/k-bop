@@ -44,14 +44,8 @@
           </button>
         </ion-item>
         <ion-item-options>
-          <button danger (click)="deleteSong(song)">
-            <ion-icon name="delete"></ion-icon>
-            Delete
-          </button>
-          <button primary (click)="showModal({mySong: song})">
-            <ion-icon name="comments"></ion-icon>
-            {{song.comments.length}} Comments
-          </button>
+          <button danger (click)="deleteSong(song)">Delete</button>
+          <button primary (click)="showModal({mySong: song})">Comments</button>
         </ion-item-options>
       </ion-item-sliding>
     </span>
