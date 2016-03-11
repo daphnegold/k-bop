@@ -12,6 +12,13 @@
     refreshingIcon="">
   </ion-refresher>
 
+  <div padding class="instructions-container" *ngIf="!currentSong && !refresherPulled">
+    <div class="instructions">
+      <h1>PULL ME</h1>
+      <img src="images/arrow.gif"/>
+    </div>
+  </div>
+
   <div *ngIf="!currentSong && refresherPulled" class="spinner">
     <div class="rect1"></div>
     <div class="rect2"></div>

@@ -67,19 +67,22 @@ export class PlaylistPage {
 
   getItems(searchbar) {
     // Reset items back to all of the songs
-    this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
+    // this.myPlaylist = Array.from(this._playlistService.playlist);
+    this.myPlaylist.forEach((song) => {
+      song.searched = false;
+    })
     // set q to the value of the searchbar
     var q = searchbar.value;
     // if the value is an empty string don't filter the songs
     if (q.trim() == '') {
       return;
     }
-
-    this.myPlaylist = this.myPlaylist.filter((song) => {
+    this.myPlaylist.forEach((song) => {
       if (song.artist.toLowerCase().indexOf(q.toLowerCase()) > -1 || song.title.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-        return true;
+        song.searched = true;
+      } else {
+        song.searched = false;
       }
-      return false;
     })
   }
 
@@ -137,11 +140,11 @@ export class PlaylistPage {
 
   getPlaylist() {
     if (this._playlistService.playlistFromApi) {
-      this.myPlaylist = Array.from(this._playlistService.playlist).reverse();
+      this.myPlaylist = Array.from(this._playlistService.playlist);
     } else {
       this._playlistService.getPlaylist()
          .subscribe(
-           songs => this.myPlaylist = Array.from(this._playlistService.playlist).reverse(),
+           songs => this.myPlaylist = Array.from(this._playlistService.playlist),
            error => { console.log(<any>error); alert("Something has gone wrong, please try again later"); }
          );
     }

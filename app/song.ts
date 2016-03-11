@@ -8,6 +8,7 @@ export interface Song {
   likes: number;
   comments: Array<{}>;
   deleted?: boolean;
+  searched?: boolean;
   decided?: boolean;
   choice?: boolean;
 }

@@ -6,13 +6,25 @@
     font-size: 16px;
   }
 
+  .instructions-container {
+    display: table !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .instructions {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 40px;
+  }
+
 }
 
 ion-navbar-section {
   display: none !important;
 }
 
-.logo .toolbar-title {
+.logo .toolbar-title, .instructions {
   letter-spacing: 0.1em;
   color: black;
    -webkit-text-fill-color: #f4f4f4; /* Will override color (regardless of order) */
