@@ -26,10 +26,10 @@
 
   <ion-list>
     <span *ngFor="#song of myPlaylist | sort">
-      <ion-item-divider light *ngIf="artistDiff(song)"
+      <!-- <ion-item-divider light *ngIf="artistDiff(song)"
         [ngClass]="{noshow: showSearch && searchQuery}">
         {{song.artist}}
-      </ion-item-divider>
+      </ion-item-divider> -->
       <ion-item-sliding
         [ngClass]="{selected: nowPlaying(song),
           deleted: song.deleted,

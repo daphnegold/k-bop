@@ -20,7 +20,7 @@ export class SongService {
 
   constructor(private http: Http) { }
 
-  addSong(songUri: string) : Observable<Song>  {
+  addSong(songUri: string) : Observable<any> {
     let user_id = this.local.get('id')._result;
     let body = JSON.stringify({ "data": { uri: songUri, uid: user_id } });
     let headers = new Headers({ 'Content-Type': 'application/json' });

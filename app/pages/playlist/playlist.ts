@@ -37,7 +37,7 @@ export class PlaylistPage {
   }
 
   onPageWillLeave() {
-    this.resetSort();
+    // this.resetSort();
   }
 
   showMenu() {

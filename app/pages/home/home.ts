@@ -140,18 +140,26 @@ export class HomePage {
 
     if (choice) {
       let addedSong = this.currentSong
-      this._songService.addSong(addedSong.uri)
-        .subscribe(
-          data => {
-            this._playlistService.addSong(addedSong);
-            console.log("Server response:")
-            console.log(data)
-          },
-          error => {
-            console.log(<any>error);
-            window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
-          }
-        );
+
+      if (this._playlistService.playlist.has(addedSong)) {
+        console.log("Already exists:");
+        console.log(addedSong);
+      } else {
+        this._songService.addSong(addedSong.uri)
+          .subscribe(
+            data => {
+              if (data.status !== "Entry already exists") {
+                this._playlistService.addSong(addedSong);
+              }
+              console.log("Server response:");
+              console.log(data);
+            },
+            error => {
+              console.log(<any>error);
+              window.plugins.toast.show("Something has gone wrong, please try again", "short", "bottom");
+            }
+          );
+      }
     }
 
     let randomNumber = Math.round(Math.random() * (this._songService.songs.length - 1));
