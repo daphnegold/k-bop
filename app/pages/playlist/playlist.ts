@@ -4,22 +4,21 @@ import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
 import {Song} from '../../song'
 import {CommentsModal} from '../comments/comments';
-import {PlaylistSortPipe} from '../../sort.pipe';
+import {ArtistFilterPipe, ArtistOrderPipe} from '../../sort.pipe';
 
 @Page({
   templateUrl: 'build/pages/playlist/playlist.html',
   providers: [LoginService],
-  pipes: [PlaylistSortPipe]
+  pipes: [ArtistFilterPipe, ArtistOrderPipe]
 })
 export class PlaylistPage {
   selectedSong: any;
   myPlaylist: Song[];
   myLink: string;
+  myArtists: Array<string>;
   currentSong: Song;
   searchQuery: string = '';
   showSearch: boolean;
-  nowArtist: string;
-  lastArtist: string;
   actionSheet: any;
 
   constructor(
@@ -34,10 +33,6 @@ export class PlaylistPage {
   onPageWillEnter() {
     this._songService.removeAudio();
     this.getPlaylist();
-  }
-
-  onPageWillLeave() {
-    // this.resetSort();
   }
 
   showMenu() {
@@ -74,22 +69,8 @@ export class PlaylistPage {
     this.nav.present(this.actionSheet);
   }
 
-  resetSort() {
-    this.nowArtist = null;
-    this.lastArtist = null;
-    this.myPlaylist = null;
-  }
-
   launch() {
     cordova.InAppBrowser.open(this.myLink, "_system", "location=true");
-  }
-
-  artistDiff(song) {
-    this.nowArtist = song.artist;
-    if (this.lastArtist !== this.nowArtist) {
-      this.lastArtist = this.nowArtist;
-      return true
-    }
   }
 
   toggleSearch(bool) {
@@ -185,12 +166,14 @@ export class PlaylistPage {
   getPlaylist() {
     if (this._playlistService.playlistFromApi) {
       this.myPlaylist = Array.from(this._playlistService.playlist);
+      this.myArtists = this._playlistService.getArtists();
     } else {
       this._playlistService.getPlaylist()
          .subscribe(
            data => {
              this.myPlaylist = Array.from(this._playlistService.playlist);
              this.myLink = this._playlistService.link;
+             this.myArtists = this._playlistService.getArtists();
            },
            error => {
              console.log(<any>error);

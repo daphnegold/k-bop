@@ -25,12 +25,11 @@
 <ion-content *ngIf="myPlaylist" class="playlist">
 
   <ion-list>
-    <span *ngFor="#song of myPlaylist | sort">
-      <!-- <ion-item-divider light *ngIf="artistDiff(song)"
-        [ngClass]="{noshow: showSearch && searchQuery}">
-        {{song.artist}}
-      </ion-item-divider> -->
-      <ion-item-sliding
+    <span *ngFor="#artist of myArtists | artistOrder">
+      <ion-item-divider light [ngClass]="{noshow: showSearch && searchQuery}">
+        {{artist}}
+      </ion-item-divider>
+      <ion-item-sliding *ngFor="#song of myPlaylist | artistFilter: artist"
         [ngClass]="{selected: nowPlaying(song),
           deleted: song.deleted,
           noshow: !song.searched && showSearch && searchQuery}">

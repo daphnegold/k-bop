@@ -2,14 +2,29 @@ import {Pipe} from "angular2/core";
 import {Song} from "./song";
 
 @Pipe({
-  name: "sort"
+  name: "artistFilter"
 })
-export class PlaylistSortPipe {
-  transform(array: Song[], args: Song): Song[] {
+export class ArtistFilterPipe {
+  transform(array, args) {
+    let artistSongs = [];
+    array.forEach((song) => {
+      if (song.artist.toLowerCase() === args[0].toLowerCase()) {
+        artistSongs.push(song);
+      }
+    });
+    return artistSongs;
+  }
+}
+
+@Pipe({
+  name: "artistOrder"
+})
+export class ArtistOrderPipe {
+  transform(array: Array<string>, args: string) {
     array.sort((a: any, b: any) => {
-      if (a.artist.toLowerCase() < b.artist.toLowerCase()) {
+      if (a.toLowerCase() < b.toLowerCase()) {
         return -1;
-      } else if (a.artist.toLowerCase() > b.artist.toLowerCase()) {
+      } else if (a.toLowerCase() > b.toLowerCase()) {
         return 1;
       } else {
         return 0;

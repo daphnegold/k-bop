@@ -32,9 +32,17 @@ export class PlaylistService {
         .catch(this.handleError)
   }
 
+  getArtists() : Array<string> {
+    let artists = [];
+    this.playlist.forEach((song: Song) => {
+      artists.push(song.artist);
+    });
+
+    return artists.filter((item, i, ary) => { return ary.indexOf(item) === i; });
+  }
+
   getPlaylist() {
     let uid = this.local.get('id')._result;
-    // return Promise.resolve(this.playlist);
     console.log('calling api');
 
     return this.http.get(this._playlistUrl + uid)
