@@ -125,6 +125,8 @@ export class PlaylistPage {
             this._playlistService.deleteSong("all")
               .subscribe(
                 data => {
+                  this.myPlaylist = null;
+                  this.myArtists = null;
                   this._playlistService.playlist.clear();
                   console.log("Server response:");
                   console.log(data);

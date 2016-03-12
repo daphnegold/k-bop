@@ -1,6 +1,6 @@
 <ion-navbar light *navbar>
   <ion-title class="logo" *ngIf="!showSearch">K-BOP</ion-title>
-  <ion-searchbar *ngIf="showSearch && myPlaylist"
+  <ion-searchbar *ngIf="showSearch"
     [(ngModel)]="searchQuery"
     (input)="getItems($event)"
     (cancel)="toggleSearch(false)">
@@ -10,7 +10,7 @@
   </ion-buttons>
 </ion-navbar>
 
-<div *ngIf="!myPlaylist" class="spinner">
+<div *ngIf="!myPlaylist && !_playlistService.playlistFromApi" class="spinner">
   <div class="rect1"></div>
   <div class="rect2"></div>
   <div class="rect3"></div>
@@ -18,9 +18,11 @@
   <div class="rect5"></div>
 </div>
 
-<div *ngIf="myPlaylist">
-  <p *ngIf="myPlaylist.size === 0">Your playlist is empty</p>
-</div>
+<h1 padding
+  style="text-align: center"
+  *ngIf="_playlistService.playlist.size == 0 && _playlistService.playlistFromApi">
+  Your playlist is empty
+</h1>
 
 <ion-content *ngIf="myPlaylist" class="playlist">
 
@@ -52,6 +54,6 @@
 
 </ion-content>
 
-<button fab primary fab-bottom fab-right *ngIf="myPlaylist" (click)="showMenu()">
+<button fab primary fab-bottom fab-right *ngIf="_playlistService.playlist.size > 0" (click)="showMenu()">
   <ion-icon name='add'></ion-icon>
 </button>
