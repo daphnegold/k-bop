@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class CommentService {
-  private _commentUrl = "https://k-bop.ninja/comment/"
+  private _commentUrl = "https://www.k-bop.ninja/comment/"
   local: Storage = new Storage(LocalStorage);
 
   constructor (private http: Http) { }

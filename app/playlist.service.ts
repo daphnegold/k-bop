@@ -9,8 +9,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class PlaylistService {
-  private _playlistUrl = "https://k-bop.ninja/playlist/"
-  private _deleteUrl = "https://k-bop.ninja/user/"
+  private _playlistUrl = "https://www.k-bop.ninja/playlist/"
+  private _deleteUrl = "https://www.k-bop.ninja/user/"
   playlist: Set<{}> = new Set();
   link: string;
   playlistFromApi: boolean;

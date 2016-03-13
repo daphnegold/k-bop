@@ -9,8 +9,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class SongService {
-  private _songsUrl = "https://k-bop.ninja/recs/";
-  private _addUrl = "https://k-bop.ninja/add"
+  private _songsUrl = "https://www.k-bop.ninja/recs/";
+  private _addUrl = "https://www.k-bop.ninja/add"
   local: Storage = new Storage(LocalStorage);
   audio: any;
   paused: boolean;
