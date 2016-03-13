@@ -41,15 +41,14 @@ export class LoginService {
   backendLogin() {
     return new Promise((resolve, reject) => {
       // idea: add query parameters with UID -if- it's in local storage so users don't need to login every time
-      var url = "http://kbop.herokuapp.com/auth/spotify";
+      var url = "https://k-bop.ninja/auth/spotify";
       // var token = this.local.get('id')._result;
       // if (token) { url += "?uid=" + token }
 
       var browserRef = window.cordova.InAppBrowser.open(url, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
       browserRef.addEventListener("loadstart", (event) => {
 
-        // http://kbop.herokuapp.com/status?user=darkwingdaphne
-        if ((event.url).indexOf("http://kbop.herokuapp.com/status") === 0) {
+        if ((event.url).indexOf("https://k-bop.ninja/status") === 0) {
           browserRef.removeEventListener("exit", (event) => {});
           browserRef.close();
 
