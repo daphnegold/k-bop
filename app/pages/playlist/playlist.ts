@@ -42,6 +42,7 @@ export class PlaylistPage {
         {
           text: 'Clear playlist',
           role: 'destructive',
+          icon: 'nuclear',
           handler: () => {
             this.actionSheet.dismiss()
             .then(() => {
@@ -52,6 +53,7 @@ export class PlaylistPage {
         },
         {
           text: 'Open in Spotify',
+          icon: 'open',
           handler: () => {
             this.launch();
             console.log('Open in Spotify clicked');
@@ -59,6 +61,7 @@ export class PlaylistPage {
         },
         {
           text: 'Logout',
+          icon: 'log-out',
           handler: () => {
             this.local.remove('id');
             window.location.reload(true);
@@ -69,6 +72,7 @@ export class PlaylistPage {
         {
           text: 'Cancel',
           role: 'cancel',
+          icon: 'close',
           handler: () => {
             console.log('Cancel clicked');
           }
