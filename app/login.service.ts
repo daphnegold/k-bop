@@ -31,7 +31,7 @@ export class LoginService {
         this.local.set('id', uid);
         this.local.set('display', display)
         this.local.set('expiration', expiration);
-        window.plugins.toast.show("Logged in", "short", "bottom");
+        window.plugins.toast.show("Logging in...", "short", "bottom");
       }, (error) => {
         window.plugins.toast.show(error, "short", "bottom");
       });
