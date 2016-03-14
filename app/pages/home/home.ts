@@ -30,6 +30,8 @@ export class HomePage {
   }
 
   onPageWillEnter() {
+    shake.startWatch(onShake);
+
     this._hammerService.swipeInit();
     this._hammerService.hammertime.on('swiperight', (event) => {
       if (this._songService.songs) {
@@ -199,7 +201,19 @@ export class HomePage {
         console.log("Complete");
         this.pullable = true;
         this.refresherPulled = false;
-       }, 10000);
+      }, 5000);
     }
+  }
+
+  onShake() {
+    // Fired when a shake is detected
+    if (this._songService.audio) {
+      this._songService.removeAudio();
+    }
+    this.getSongs();
+    this.pullable = false;
+    this.refresherPulled = true;
+    console.log('Shake it, shake, shake it!')
+    shake.stopWatch();
   }
 }
