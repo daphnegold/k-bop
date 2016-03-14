@@ -1,25 +1,52 @@
-<ion-slides pager>
+<ion-slides pager class="intro">
 
   <ion-slide style="background-color: black">
     <button outline light large *ngIf="!loggedIn()" (click)="login()">LOGIN</button>
-    <!-- <button outline light large *ngIf="loggedIn()" (click)="goToHome()">Enter</button> -->
+    <p>
+      Or swipe to view the tutorial.
+    </p>
   </ion-slide>
 
-  <ion-slide style="background-color: purple">
-    <h2>Slide 2</h2>
+  <ion-slide style="background-color: #754C78">
+    <p>
+      Pull to load K-Pop.
+    </p>
+    <img src="images/pull-me.png" />
   </ion-slide>
 
-  <ion-slide style="background-color: pink">
-    <h2>Slide 3</h2>
+  <ion-slide style="background-color: #754C78">
+    <p>
+      <strong>Swipe right</strong> to like a track, <strong>left</strong> to pass.
+    </p>
+    <img src="images/swipe-me.png" />
+  </ion-slide>
+
+  <ion-slide style="background-color: #754C78">
+    <p>
+      View your playlist.
+    </p>
+    <img src="images/view-playlist.png" />
+  </ion-slide>
+
+  <ion-slide style="background-color: #754C78">
+    <p>
+      Delete tracks or leave a comment.
+    </p>
+    <img src="images/delete-tracks.png" />
+  </ion-slide>
+
+  <ion-slide style="background-color: #754C78">
+    <p>
+      Open your playlist in Spotify.
+    </p>
+    <img src="images/open-spotify.png" />
+  </ion-slide>
+
+  <ion-slide style="background-color: #754C78">
     <ion-row>
         <ion-col>
-        </ion-col>
-    </ion-row>
-    <ion-row>
-        <ion-col>
-            <button outline dark (click)="goToHome()">Let's go!</button>
+            <button outline light large (click)="goToHome()">Let's go!</button>
         </ion-col>
     </ion-row>
   </ion-slide>
-
 </ion-slides>

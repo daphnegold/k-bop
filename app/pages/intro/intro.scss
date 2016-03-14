@@ -1,19 +1,28 @@
 .intro {
 
-}
-
-ion-slide:first-child {
-  background:
-  /* top, transparent purple, faked with gradient */
-    linear-gradient(
-      rgba(135, 100, 145, 0.45),
-      rgba(135, 100, 145, 0.45)
-    ),
-  url("../../images/heart-hands.jpeg");
-  background-position: center;
-  background-size: cover;
-
-  button {
-    font-size: 28px;
+  p, button {
+    color: white;
   }
+
+  ion-slide img {
+    height: 70vh !important;
+    width: auto !important;
+  }
+
+  ion-slide:first-child {
+    background:
+    /* top, transparent purple, faked with gradient */
+      linear-gradient(
+        rgba(135, 100, 145, 0.45),
+        rgba(135, 100, 145, 0.45)
+      ),
+    url("../../images/heart-hands.jpeg");
+    background-position: center;
+    background-size: cover;
+
+    button {
+      font-size: 28px;
+    }
+  }
+
 }
