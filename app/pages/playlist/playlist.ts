@@ -1,4 +1,4 @@
-import {Page, Alert, NavController, NavParams, Modal, ActionSheet} from 'ionic-framework/ionic';
+import {Page, Alert, NavController, NavParams, Modal, ActionSheet, LocalStorage, Storage} from 'ionic-framework/ionic';
 import {LoginService} from '../../login.service';
 import {SongService} from '../../song.service'
 import {PlaylistService} from '../../playlist.service';
@@ -12,6 +12,7 @@ import {ArtistFilterPipe, ArtistOrderPipe} from '../../sort.pipe';
   pipes: [ArtistFilterPipe, ArtistOrderPipe]
 })
 export class PlaylistPage {
+  local: Storage = new Storage(LocalStorage);
   selectedSong: any;
   myPlaylist: Song[];
   myLink: string;
@@ -54,6 +55,15 @@ export class PlaylistPage {
           handler: () => {
             this.launch();
             console.log('Open in Spotify clicked');
+          }
+        },
+        {
+          text: 'Logout',
+          handler: () => {
+            this.local.remove('id');
+            window.location.reload(true);
+            window.plugins.toast.show("Logging out...", "short", "bottom");
+            console.log('Logout clicked');
           }
         },
         {

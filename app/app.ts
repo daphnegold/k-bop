@@ -17,7 +17,7 @@ import {Type} from 'angular2/core';
   providers: [PlaylistService, SongService]
 })
 class MyApp {
-  rootPage: Type = TabsPage;
+  rootPage: Type;
   // pages: Array<{title: string, component: Type}>
 
   constructor(private app: IonicApp, private platform: Platform, private _songService: SongService) {

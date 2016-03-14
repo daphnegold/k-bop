@@ -4,6 +4,7 @@ import {SongService} from '../../song.service';
 import {HammerService} from '../../hammer.service';
 import {Song} from '../../song'
 import {CommentsModal} from '../comments/comments';
+import {IntroPage} from '../intro/intro';
 
 @Page({
   templateUrl: 'build/pages/home/home.html',
