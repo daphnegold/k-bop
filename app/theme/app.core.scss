@@ -19,6 +19,10 @@
 
 @import "./animate.min";
 
+.tab-button[aria-selected=true] {
+  // color: #e51284 !important;
+}
+
 .logo .toolbar-title {
   letter-spacing: 0.1em;
   color: black;

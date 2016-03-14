@@ -20,11 +20,11 @@
 
 <h1 padding
   style="text-align: center"
-  *ngIf="_playlistService.playlist.size == 0 && _playlistService.playlistFromApi">
+  *ngIf="_playlistService.playlist.size === 0 && _playlistService.playlistFromApi">
   Your playlist is empty
 </h1>
 
-<ion-content *ngIf="myPlaylist" class="playlist">
+<ion-content *ngIf="myPlaylist && _playlistService.playlist.size > 0" class="playlist">
 
   <ion-list>
     <span *ngFor="#artist of myArtists | artistOrder">
