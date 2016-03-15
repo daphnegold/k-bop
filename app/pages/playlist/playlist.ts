@@ -84,7 +84,8 @@ export class PlaylistPage {
   }
 
   launch() {
-    cordova.InAppBrowser.open(this.myLink, "_system", "location=true");
+    this.removeAudio();
+    cordova.InAppBrowser.open(this.myLink, "_system", "location=false");
   }
 
   toggleSearch(bool) {
