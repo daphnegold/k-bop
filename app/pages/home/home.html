@@ -1,4 +1,4 @@
-<ion-navbar light *navbar>
+<ion-navbar dark *navbar>
   <ion-title class="logo">K-BOP</ion-title>
 </ion-navbar>
 
@@ -32,7 +32,7 @@
       slideInUp: !currentSong.decided}">
     <ion-item>
       <ion-avatar item-right>
-        <ion-icon *ngIf="!_songService.paused" name="md-musical-note" item-right></ion-icon>
+        <ion-icon bright *ngIf="!_songService.paused" name="md-musical-note" item-right></ion-icon>
       </ion-avatar>
       <h2>{{ currentSong.artist }}</h2>
     </ion-item>
@@ -49,11 +49,11 @@
         <img class="spotify-link" src="images/play_on_spotify-black.png" />
       </div>
       <button dark clear item-right>
-        <ion-icon name="heart"></ion-icon>
+        <ion-icon bright name="heart"></ion-icon>
         <div>{{ currentSong.likes }} Likes</div>
       </button>
-      <button primary clear item-right (click)="showModal({mySong: currentSong})">
-        <ion-icon name="text"></ion-icon>
+      <button clear item-right (click)="showModal({mySong: currentSong})">
+        <ion-icon bright name="text"></ion-icon>
         <div>{{ currentSong.comments.length }} Comments</div>
       </button>
     </ion-item>

@@ -1,4 +1,4 @@
-<ion-navbar light *navbar>
+<ion-navbar dark *navbar>
   <ion-title class="logo" *ngIf="!showSearch">K-BOP</ion-title>
   <ion-searchbar *ngIf="showSearch"
     [(ngModel)]="searchQuery"
@@ -28,7 +28,7 @@
 
   <ion-list>
     <span *ngFor="#artist of myArtists | artistOrder">
-      <ion-item-divider light [ngClass]="{noshow: showSearch && searchQuery}">
+      <ion-item-divider superdark [ngClass]="{noshow: showSearch && searchQuery}">
         {{artist}}
       </ion-item-divider>
       <ion-item-sliding *ngFor="#song of myPlaylist | artistFilter: artist"

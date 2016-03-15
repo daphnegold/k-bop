@@ -19,6 +19,19 @@
 
 @import "./animate.min";
 
+scroll-content {
+  background-color: black;
+}
+
+
+ion-card, .item {
+  background-color: #222;
+}
+
+div, h1, ion-label h2, ion-card-content h4 {
+  color: white;
+}
+
 .tab-button[aria-selected=true] {
   // color: #e51284 !important;
 }
@@ -26,9 +39,9 @@
 .logo .toolbar-title {
   letter-spacing: 0.1em;
   color: black;
-   -webkit-text-fill-color: #f4f4f4; /* Will override color (regardless of order) */
+   -webkit-text-fill-color: black; /* Will override color (regardless of order) */
    -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: black;
+   -webkit-text-stroke-color: white;
 }
 
 .spinner {
