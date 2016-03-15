@@ -1,8 +1,10 @@
 <ion-slides pager class="intro">
 
   <ion-slide style="background-color: black">
-    <button outline light large *ngIf="!loggedIn()" (click)="login()">LOGIN</button>
-    <p>
+    <button clear *ngIf="!loggedIn()" (click)="login()">
+      <img src="images/log_in-mobile.png" />
+    </button>
+    <p *ngIf="!loggedIn()">
       Or swipe to view the tutorial.
     </p>
   </ion-slide>

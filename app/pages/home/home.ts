@@ -24,6 +24,10 @@ export class HomePage {
     private _hammerService: HammerService,
     private nav: NavController) { }
 
+  launch() {
+    cordova.InAppBrowser.open(this.currentSong.spotify_url, "_system", "location=false");
+  }
+
   showModal(songInfo) {
     let modal = Modal.create(CommentsModal, songInfo);
     this.nav.present(modal)

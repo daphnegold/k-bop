@@ -45,6 +45,9 @@
 
     <hr />
     <ion-item>
+      <div item-left (click)="launch()">
+        <img class="spotify-link" src="images/play_on_spotify-black.png" />
+      </div>
       <button dark clear item-right>
         <ion-icon name="heart"></ion-icon>
         <div>{{ currentSong.likes }} Likes</div>
