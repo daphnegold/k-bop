@@ -1,11 +1,26 @@
 .home {
 
+  ion-row {
+    height: 100%;
+  }
+
+  hr {
+    margin: 0;
+  }
+
   button[fab].play-song {
     z-index: 1;
   }
 
   ion-card {
-    max-height: 95%;
+    max-height: 98%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .album-cover {
+    height: 52vh;
+    object-fit: cover;
   }
 
   ion-card-content h4 {
@@ -30,13 +45,8 @@
     font-size: 16px;
   }
 
-  .album-cover {
-    height: 55vh;
-    object-fit: cover;
-  }
-
   scroll-content {
-    padding: 10px;
+    padding: 0;
   }
 
   .instructions {

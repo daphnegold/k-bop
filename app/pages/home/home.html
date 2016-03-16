@@ -10,13 +10,6 @@
     refreshingIcon="">
   </ion-refresher>
 
-  <div padding class="instructions-container" *ngIf="!currentSong && !refresherPulled">
-    <div class="instructions">
-      <h1>PULL ME</h1>
-      <img src="images/down-arrow.gif"/>
-    </div>
-  </div>
-
   <div *ngIf="!currentSong && refresherPulled" class="spinner">
     <div class="rect1"></div>
     <div class="rect2"></div>
@@ -25,37 +18,48 @@
     <div class="rect5"></div>
   </div>
 
-  <ion-card *ngIf="currentSong"
-    [ngClass]="{animated: currentSong,
-      fadeOutLeft: currentSong.decided && !currentSong.choice,
-      fadeOutRight: currentSong.decided && currentSong.choice,
-      slideInDown: !currentSong.decided}">
-    <ion-item>
-      <h2>{{ currentSong.artist }}</h2>
-      <span class="spotify-link" (click)="launch()">
-        <img src="images/listen_on_spotify-green.png" />
-      </span>
-    </ion-item>
+  <ion-row center>
+    <ion-col>
+      <div padding class="instructions-container" *ngIf="!currentSong && !refresherPulled">
+        <div class="instructions">
+          <h1>PULL ME</h1>
+          <img src="images/down-arrow.gif"/>
+        </div>
+      </div>
 
-    <img class="album-cover" *ngIf="!hideImage" [src]="currentSong.image_large" (click)="toggleSong()">
-    <ion-card-content>
-      <h4>{{ currentSong.title }}</h4>
-      <button class="play-song" fab primary fab-bottom fab-right (click)="toggleSong()">
-        <ion-icon *ngIf="_songService.paused" name="play"></ion-icon>
-        <ion-icon *ngIf="!_songService.paused" name="pause"></ion-icon>
-      </button>
-    </ion-card-content>
+      <ion-card *ngIf="currentSong"
+        [ngClass]="{animated: currentSong,
+          fadeOutLeft: currentSong.decided && !currentSong.choice,
+          fadeOutRight: currentSong.decided && currentSong.choice,
+          slideInDown: !currentSong.decided}">
+        <ion-item>
+          <h2>{{ currentSong.artist }}</h2>
+          <span class="spotify-link" (click)="launch()">
+            <img src="images/listen_on_spotify-green.png" />
+          </span>
+        </ion-item>
 
-    <hr />
-    <ion-item>
-      <button dark clear item-left>
-        <ion-icon name="heart"></ion-icon>
-        <div>{{ currentSong.likes }} Likes</div>
-      </button>
-      <button primary clear item-left (click)="showModal({mySong: currentSong})">
-        <ion-icon name="text"></ion-icon>
-        <div>{{ currentSong.comments.length }} Comments</div>
-      </button>
-    </ion-item>
-  </ion-card>
+        <img class="album-cover" *ngIf="!hideImage" [src]="currentSong.image_large" (click)="toggleSong()">
+        <ion-card-content>
+          <h4>{{ currentSong.title }}</h4>
+          <button class="play-song" fab primary fab-bottom fab-right (click)="toggleSong()">
+            <ion-icon *ngIf="_songService.paused" name="play"></ion-icon>
+            <ion-icon *ngIf="!_songService.paused" name="pause"></ion-icon>
+          </button>
+        </ion-card-content>
+
+        <hr />
+        <!-- <ion-item> -->
+          <button dark clear item-left>
+            <ion-icon name="heart"></ion-icon>
+            <div>{{ currentSong.likes }} Likes</div>
+          </button>
+          <button primary clear item-left (click)="showModal({mySong: currentSong})">
+            <ion-icon name="text"></ion-icon>
+            <div>{{ currentSong.comments.length }} Comments</div>
+          </button>
+        <!-- </ion-item> -->
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
