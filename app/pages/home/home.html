@@ -41,8 +41,8 @@
     <ion-card-content>
       <h4>{{ currentSong.title }}</h4>
       <button class="play-song" fab primary fab-bottom fab-right (click)="toggleSong()">
-        <ion-icon *ngIf="!_songService.paused" name="pause"></ion-icon>
         <ion-icon *ngIf="_songService.paused" name="play"></ion-icon>
+        <ion-icon *ngIf="!_songService.paused" name="pause"></ion-icon>
       </button>
     </ion-card-content>
 
