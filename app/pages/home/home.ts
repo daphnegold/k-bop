@@ -25,7 +25,7 @@ export class HomePage {
     private nav: NavController) { }
 
   launch() {
-    this.toggleSong();
+    this.stopSong();
     cordova.InAppBrowser.open(this.currentSong.spotify_url, "_system", "location=false");
   }
 
