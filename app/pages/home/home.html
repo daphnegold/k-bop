@@ -31,28 +31,28 @@
       fadeOutRight: currentSong.decided && currentSong.choice,
       slideInUp: !currentSong.decided}">
     <ion-item>
-      <ion-avatar item-right>
-        <ion-icon *ngIf="!_songService.paused" name="md-musical-note" item-right></ion-icon>
-      </ion-avatar>
       <h2>{{ currentSong.artist }}</h2>
+      <span class="spotify-link" (click)="launch()">
+        <img src="images/listen_on_spotify-green.png" />
+      </span>
     </ion-item>
 
-    <img *ngIf="!hideImage" [src]="currentSong.image_large" (click)="toggleSong()">
-
+    <img class="album-cover" *ngIf="!hideImage" [src]="currentSong.image_large" (click)="toggleSong()">
     <ion-card-content>
       <h4>{{ currentSong.title }}</h4>
+      <button class="play-song" fab primary fab-bottom fab-right (click)="toggleSong()">
+        <ion-icon *ngIf="!_songService.paused" name="pause"></ion-icon>
+        <ion-icon *ngIf="_songService.paused" name="play"></ion-icon>
+      </button>
     </ion-card-content>
 
     <hr />
     <ion-item>
-      <div item-left (click)="launch()">
-        <img class="spotify-link" src="images/play_on_spotify-black.png" />
-      </div>
-      <button dark clear item-right>
+      <button dark clear item-left>
         <ion-icon name="heart"></ion-icon>
         <div>{{ currentSong.likes }} Likes</div>
       </button>
-      <button primary clear item-right (click)="showModal({mySong: currentSong})">
+      <button primary clear item-left (click)="showModal({mySong: currentSong})">
         <ion-icon name="text"></ion-icon>
         <div>{{ currentSong.comments.length }} Comments</div>
       </button>

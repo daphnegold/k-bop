@@ -1,7 +1,27 @@
 .home {
 
+  button[fab].play-song {
+    z-index: 1;
+  }
+
+  ion-card {
+    height: 95%;
+  }
+
+  ion-card-content h4 {
+    max-width: 85%;
+  }
+
+  ion-item h2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 54%;
+    display: inline-block;
+  }
+
   .spotify-link {
-    width: 65%;
+    width: 45%;
+    float: right;
   }
 
   p {
@@ -10,27 +30,13 @@
     font-size: 16px;
   }
 
-  ion-card {
-
-    img {
-      max-height: 63%;
-      object-fit: cover;
-    }
-
+  .album-cover {
+    max-height: 63%;
+    object-fit: cover;
   }
 
   scroll-content {
     padding: 10px;
-  }
-
-  .instructions-container, scroll-content {
-    display: table !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-  .instructions, ion-card {
-    display: table-cell;
-    vertical-align: middle;
   }
 
   .instructions {

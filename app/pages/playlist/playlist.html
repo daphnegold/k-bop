@@ -7,6 +7,9 @@
   </ion-searchbar>
   <ion-buttons end>
     <button clear *ngIf="!showSearch" (click)="toggleSearch(true)"><ion-icon name="search"></ion-icon></button>
+    <button clear *ngIf="!showSearch" (click)="showMenu()">
+      <ion-icon name='more'></ion-icon>
+    </button>
   </ion-buttons>
 </ion-navbar>
 
@@ -54,6 +57,6 @@
 
 </ion-content>
 
-<button fab primary fab-bottom fab-right (click)="showMenu()">
+<!-- <button fab primary fab-bottom fab-right (click)="showMenu()">
   <ion-icon name='more'></ion-icon>
-</button>
+</button> -->

@@ -19,8 +19,16 @@
 
 @import "./animate.min";
 
-.tab-button[aria-selected=true] {
-  // color: #e51284 !important;
+// .tab-button[aria-selected=true] {
+//   color: purple !important;
+// }
+//
+// tab-highlight {
+//   background: #cc1075;
+// }
+
+body {
+  height: 100%;
 }
 
 .logo .toolbar-title {
