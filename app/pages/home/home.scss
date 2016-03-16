@@ -1,5 +1,9 @@
 .home {
 
+  .likes-n-comments {
+    padding-left: 0;
+  }
+
   ion-row {
     height: 100%;
   }
@@ -24,7 +28,7 @@
   }
 
   ion-card-content h4 {
-    max-width: 85%;
+    max-width: 82%;
   }
 
   ion-item h2 {
