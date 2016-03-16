@@ -29,7 +29,7 @@
     [ngClass]="{animated: currentSong,
       fadeOutLeft: currentSong.decided && !currentSong.choice,
       fadeOutRight: currentSong.decided && currentSong.choice,
-      slideInUp: !currentSong.decided}">
+      slideInDown: !currentSong.decided}">
     <ion-item>
       <h2>{{ currentSong.artist }}</h2>
       <span class="spotify-link" (click)="launch()">
