@@ -48,6 +48,9 @@ Install Typescript
 Install packages  
 `npm install`
 
+Add the platform  
+`ionic platform add android`  
+
 ### Building for Android
 On a mobile device  
 `ionic run android`  
