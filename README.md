@@ -46,10 +46,10 @@ Install packages
 On a mobile device  
 `ionic run android`  
 
-In the Android emulator (Android Studio + SDK Manager required)
+In the Android emulator (Android Studio + SDK Manager required)  
 `ionic emulate android`
 
 ### Resources
-[Installing & Running Ionic](http://ionicframework.com/docs/v2/getting-started/installation/)
-[Installing & Using Typescript](http://www.typescriptlang.org/)
-[Angular 2 for Typescript](https://angular.io/docs/ts/latest/index.html)
+[Installing & Running Ionic](http://ionicframework.com/docs/v2/getting-started/installation/)  
+[Installing & Using Typescript](http://www.typescriptlang.org/)  
+[Angular 2 for Typescript](https://angular.io/docs/ts/latest/index.html)  
