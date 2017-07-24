@@ -13,6 +13,7 @@
 
 ## Information
 K-Bop is a hybrid mobile application developed with Ionic 2. Users authenticate and swipe to build a K-Pop playlist for Spotify.
+- [Back end](https://github.com/daphnegold/k-bop-api)
 - [Product Plan](https://github.com/daphnegold/k-bop-api/blob/master/product-plan.md)
 - [Trello Board](https://trello.com/b/sn0PXJ4Z/k-bop)
 
